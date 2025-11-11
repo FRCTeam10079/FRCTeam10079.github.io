@@ -10,6 +10,8 @@ root {
     html(src("resources.css"))
     html(src("team.html"))
     html(src("style.css"))
+    cp(src("script.js"))
+    cp(src("contact.js"))
 
     path("images") {
         source.files().forEach { cp(src(it.name)) }
