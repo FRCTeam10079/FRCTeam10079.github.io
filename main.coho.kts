@@ -9,8 +9,12 @@ data class Sponsor(val name: String, val url: String, val image: String) {
 
 root {
     val sponsors = listOf(
-        Sponsor("NASA", "https://www.nasa.gov/", "images/nasasponsor1.png"),
-        Sponsor("Dunn Lumber", "#", "images/dunnlumbersponsor.png"),
+        Sponsor("Fluke", "https://www.fluke.com/", "images/flukesponsor.png"),
+        Sponsor("Nasa", "https://www.nasa.gov/", "images/nasasponsor1.png"),
+        Sponsor("Dunn", "#", "images/dunnlumbersponsor.png"),
+        Sponsor("Boeing", "https://www.boeing.com/", "images/boeingsponsor.png"),
+        Sponsor("First Robotics", "https://www.firstinspires.org/", "images/firstrobosponsor.png"),
+        Sponsor("Fluke", "https://www.fluke.com/", "images/flukesponsor.png"),
     )
 
     KtHtmlFile.globalContext = mapOf(
