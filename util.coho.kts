@@ -1,4 +1,5 @@
-fun makeNavBar(navBarData: List<Map<String, Any?>>) = "nav"("class" to "site-nav") {
+fun makeNavBar(data: Any?) = "nav"("class" to "site-nav") {
+    val navBarData = data as List<Map<String, Any?>>
     for (navItem in navBarData) {
         if ("children" in navItem) {
             // Make dropdown
