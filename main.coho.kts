@@ -10,6 +10,8 @@ root {
     html(src("calendar.css"))
     html(src("contact.html"))
     html(src("contact.css"))
+    html(src("donate.html"))
+    html(src("donate.css"))
     html(src("events.html"))
     html(src("events.css"))
     ktHtml(src("index.html"))
@@ -19,6 +21,7 @@ root {
     html(src("style.css"))
     cp(src("script.js"))
     cp(src("contact.js"))
+    cp(src("slider.js"))
 
     path("images") {
         source.files().forEach { cp(src(it.name)) }
