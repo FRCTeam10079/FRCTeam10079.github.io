@@ -8,7 +8,7 @@ fun makeNavBar(navBarData: List<Map<String, Any?>>) = "nav"("class" to "site-nav
                 }
                 "div"("class" to "dropdown-content") {
                     for (navChild in navItem["children"] as List<Map<String, Any?>>) {
-                        "a"("href" to navItem["url"]) {
+                        "a"("href" to navChild["url"]) {
                             append(navChild["title"].toString())
                         }
                     }
