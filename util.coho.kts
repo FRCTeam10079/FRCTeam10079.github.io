@@ -1,36 +1,32 @@
 fun makeNavBar(data: Any?): String {
-
-    if (data == null) {
-        println("MakeNavBar Error: Data passed in is strictly NULL.")
-        return "<!-- Error: navBarData is NULL. Check if 'navbar-data.yaml' exists in the src folder -->"
-    }
-
+    val dataType = if (data == null) "NULL (File might be missing or empty)" else data::class.java.name
+    val dataContent = data.toString()
 
     var list = data as? List<*>
 
-
-    //    We check if it is a Map, and if so, grab the first value that looks like a list.
     if (list == null && data is Map<*, *>) {
         list = data.values.firstOrNull { it is List<*> } as? List<*>
     }
 
-
     if (list == null) {
-        return "<!-- Error: Data exists but is type ${data::class.simpleName}, not List. Content: $data -->"
+        return """
+            <div style="background-color: #ffcccc; color: #cc0000; padding: 10px; border: 2px solid red; font-family: monospace; font-size: 12px; z-index:9999; position: relative;">
+                <strong>NAVBAR ERROR:</strong><br/>
+                <strong>Received Type:</strong> $dataType<br/>
+                <strong>Content:</strong> $dataContent
+            </div>
+        """.trimIndent()
     }
 
     return "nav"("class" to "site-nav") {
         for (item in list) {
             val navItem = item as? Map<*, *> ?: continue
             val title = navItem["title"]?.toString() ?: "Untitled"
-            
-            if (navItem.containsKey("children")) {
 
+            if (navItem.containsKey("children")) {
                 "div"("class" to "dropdown") {
                     "button"("class" to "dropbtn") {
                         append(title)
-                        
-                        "i"("class" to "fa fa-caret-down") {} 
                     }
                     "div"("class" to "dropdown-content") {
                         val children = navItem["children"] as? List<*> ?: emptyList<Any>()
@@ -43,7 +39,6 @@ fun makeNavBar(data: Any?): String {
                     }
                 }
             } else {
-
                 "a"("href" to navItem["url"]) {
                     append(title)
                 }
