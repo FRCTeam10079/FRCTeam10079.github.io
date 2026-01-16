@@ -1,0 +1,26 @@
+root {
+    includes = listOf(src("util.coho.kts"))
+
+    KtHtmlFile.globalContext = mapOf(
+        "sponsors" to yaml(src("sponsors.yaml")),
+        "navBarData" to yaml(src("navbar-data.yaml")),
+    )
+
+    html(src("calendar.html"))
+    html(src("calendar.css"))
+    html(src("contact.html"))
+    html(src("contact.css"))
+    html(src("events.html"))
+    html(src("events.css"))
+    ktHtml(src("index.html"))
+    html(src("resources.html"))
+    html(src("resources.css"))
+    html(src("team.html"))
+    html(src("style.css"))
+    cp(src("script.js"))
+    cp(src("contact.js"))
+
+    path("images") {
+        source.files().forEach { cp(src(it.name)) }
+    }
+}
