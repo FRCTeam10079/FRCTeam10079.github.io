@@ -1,4 +1,4 @@
-main.coho.kts: root {
+root {
     includes = listOf(src("util.coho.kts"))
 
 
@@ -20,11 +20,10 @@ main.coho.kts: root {
             mapOf("title" to "Contact Us", "url" to "contact.html")
         ))
     )
- 
 
     KtHtmlFile.globalContext = mapOf(
         "sponsors" to yaml(src("sponsors.yaml")),
-        "navBarData" to manualNavBar 
+        "navBarData" to manualNavBar
     )
 
     ktHtml(src("calendar.html"))
