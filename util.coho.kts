@@ -9,7 +9,7 @@ fun makeNavBar(data: Any?): String {
                 // Make dropdown
                 "div"("class" to "dropdown") {
                     "button"("class" to "dropbtn") {
-                        append(navItem["title"])
+                        append(navItem["title"].toString())
                     }
                     "div"("class" to "dropdown-content") {
                         val children = navItem["children"] as? List<*> ?: emptyList<Any>()
@@ -24,7 +24,7 @@ fun makeNavBar(data: Any?): String {
             } else {
                 // Make single
                 "a"("href" to navItem["url"]) {
-                    append(navItem["title"])
+                    append(navItem["title"].toString())
                 }
             }
         }
