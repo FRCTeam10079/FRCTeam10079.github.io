@@ -1,6 +1,7 @@
-fun makeNavBar(data: Any?) = "nav"("class" to "site-nav") {
-    val list = data as? List<*>
-    if (list != null) {
+fun makeNavBar(data: Any?): String {
+    val list = data as? List<*> ?: return "<!-- Navbar data was null -->"
+    
+    return "nav"("class" to "site-nav") {
         for (item in list) {
             val navItem = item as? Map<*, *> ?: continue
             
@@ -27,8 +28,5 @@ fun makeNavBar(data: Any?) = "nav"("class" to "site-nav") {
                 }
             }
         }
-    } else {
-        // Fallback or error indication (optional, or just empty)
-        append("<!-- Navbar data was null or invalid -->")
     }
 }
