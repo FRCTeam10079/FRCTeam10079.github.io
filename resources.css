@@ -17,6 +17,8 @@
     flex-direction: column;
     gap: 1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    align-items: center;
+    text-align: center;
 }
 
 .resource-card:not(.disabled):hover {
@@ -26,9 +28,9 @@
 }
 
 .card-icon {
-    width: 48px;
-    height: 48px;
-    background-color: #333; /* Placeholder */
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
     border-radius: 8px;
     margin-bottom: 0.5rem;
 }
