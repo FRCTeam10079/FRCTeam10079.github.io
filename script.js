@@ -106,3 +106,45 @@ if (countdown) {
         }
     }, 1000);
 }
+
+// Mobile Menu Logic
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const siteNav = document.querySelector('.site-nav');
+const dropdowns = document.querySelectorAll('.dropdown');
+
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        siteNav.classList.toggle('active');
+    });
+}
+
+// Mobile Dropdown Logic
+dropdowns.forEach(dropdown => {
+    const dropbtn = dropdown.querySelector('.dropbtn');
+    if (dropbtn) {
+        dropbtn.addEventListener('click', (e) => {
+            if (window.innerWidth <= 900) {
+                // Prevent default behavior
+                e.preventDefault();
+                
+                // Close other dropdowns
+                dropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        otherDropdown.classList.remove('active');
+                    }
+                });
+                
+                dropdown.classList.toggle('active');
+            }
+        });
+    }
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (siteNav && mobileMenuBtn && !siteNav.contains(e.target) && !mobileMenuBtn.contains(e.target) && window.innerWidth <= 900) {
+        siteNav.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+    }
+});
