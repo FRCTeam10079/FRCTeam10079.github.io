@@ -37,6 +37,11 @@ root {
                         append("Bothell Robotics")
                     }
                 }
+                "div"("class" to "mobile-menu-btn") {
+                    for (i in 1..3) {
+                        "span"() {}
+                    }
+                }
                 append(makeNavBar(yaml(src("navbar.yaml"))))
             }
         },
