@@ -46,6 +46,8 @@ root {
     cp(src("calendar.css"))
     ktHtml(src("contact.html"))
     cp(src("contact.css"))
+    ktHtml(src("donate.html"))
+    cp(src("donate.css"))
     ktHtml(src("events.html"))
     cp(src("events.css"))
     ktHtml(src("index.html"))
