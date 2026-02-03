@@ -26,6 +26,7 @@ jobs:
           workflow: gradle-artifact.yml
       - run: java -jar cli-all.jar
       - name: Deploy with Vercel
+        if: success() && github.ref == 'refs/heads/main' # Only run deploy on main branch, so PR branches don't get deployed
         uses: amondnet/vercel-action@v20
         id: vercel-action
         with:
