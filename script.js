@@ -76,36 +76,41 @@ const handleScroll = () => {
 window.addEventListener('scroll', handleScroll);
 
 // Countdown Timer Logic
-const countdown = document.getElementById('countdown');
+const countdowns = document.querySelectorAll('[data-countdown-target]');
 
-if (countdown) {
-    // Set the date we're counting down to
-    // Glacier Peak starts March 13, 2026
-    const targetDate = new Date("Mar 13, 2026 00:00:00").getTime();
+countdowns.forEach((countdown) => {
+    const targetDateValue = countdown.getAttribute('data-countdown-target');
+    if (!targetDateValue) return;
 
-    const updateCountdown = setInterval(function() {
+    const targetDate = new Date(targetDateValue).getTime();
+    if (Number.isNaN(targetDate)) return;
+
+    const daysEl = countdown.querySelector('.days');
+    const hoursEl = countdown.querySelector('.hours');
+    const minutesEl = countdown.querySelector('.minutes');
+    const secondsEl = countdown.querySelector('.seconds');
+
+    const updateCountdown = setInterval(() => {
         const now = new Date().getTime();
         const distance = targetDate - now;
 
-        // Time calculations
+        if (distance < 0) {
+            clearInterval(updateCountdown);
+            countdown.innerHTML = "<div class='time-box' style='width:100%'><span>EVENT LIVE!</span></div>";
+            return;
+        }
+
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Display results
-        document.getElementById('days').innerHTML = days < 10 ? '0' + days : days;
-        document.getElementById('hours').innerHTML = hours < 10 ? '0' + hours : hours;
-        document.getElementById('minutes').innerHTML = minutes < 10 ? '0' + minutes : minutes;
-        document.getElementById('seconds').innerHTML = seconds < 10 ? '0' + seconds : seconds;
-
-        // If the count down is finished, write some text
-        if (distance < 0) {
-            clearInterval(updateCountdown);
-            countdown.innerHTML = "<div class='time-box' style='width:100%'><span>EVENT LIVE!</span></div>";
-        }
+        if (daysEl) daysEl.textContent = days < 10 ? '0' + days : days.toString();
+        if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours.toString();
+        if (minutesEl) minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes.toString();
+        if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds.toString();
     }, 1000);
-}
+});
 
 // Mobile Menu Logic
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
