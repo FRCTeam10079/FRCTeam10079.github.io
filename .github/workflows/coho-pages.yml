@@ -16,14 +16,12 @@ jobs:
           distribution: "temurin"
           server-id: github
           settings-path: ${{ github.workspace }}
-      - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v11
-        with:
-          github_token: ${{secrets.ARTIFACT_TOKEN}}
-          workflow_conclusion: success
-          name: coho.jar
-          repo: sockeye-d/coho
-          workflow: gradle-artifact.yml
+      - name: Build coho.jar
+        run: |
+          git clone https://github.com/sockeye-d/coho.git /tmp/coho
+          cd /tmp/coho
+          ./gradlew :cli:shadowJar
+          cp cli/build/libs/cli-all.jar ${{ github.workspace }}/cli-all.jar
       - run: java -jar cli-all.jar
       - name: Deploy with Vercel
         uses: amondnet/vercel-action@v20
