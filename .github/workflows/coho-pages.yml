@@ -24,6 +24,7 @@ jobs:
           cp cli/build/libs/cli-all.jar ${{ github.workspace }}/cli-all.jar
       - run: java -jar cli-all.jar
       - name: Deploy with Vercel
+        if: success() && github.ref == 'refs/heads/main' # Only run deploy on main branch, so PR branches don't get deployed
         uses: amondnet/vercel-action@v20
         id: vercel-action
         with:
