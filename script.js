@@ -1,155 +1,79 @@
+/* ==========================================================================
+   script.js — page behaviors: scroll reveal, back-to-top, countdowns.
+   (Header/footer/nav behavior lives in layout.js.)
+   ========================================================================== */
 
-const sr = ScrollReveal({
-    origin: 'bottom',
-    distance: '30px',     
-    duration: 600,         
-    delay: 100,            
-    reset: false,         
-    easing: 'cubic-bezier(0.5, 0, 0, 1)', 
-    viewFactor: 0.2       
-});
+'use strict';
 
+// ---- Scroll reveal (IntersectionObserver; content stays visible without JS) ----
+(function () {
+    var revealed = document.querySelectorAll('.reveal');
+    if (!revealed.length) return;
 
-sr.reveal('.hero-left h1', { delay: 100 });
-sr.reveal('.hero-left h2', { delay: 200 });
-sr.reveal('.hero-left .team-logo', { delay: 300, scale: 0.9, distance: '0px' }); 
-sr.reveal('.hero-right', { origin: 'right', distance: '50px', delay: 200 });
-
-
-sr.reveal('.about-content', { origin: 'left', distance: '50px' });
-sr.reveal('.about-image', { origin: 'right', distance: '50px', delay: 150 });
-
-sr.reveal('.sponsors-section', { delay: 100 });
-sr.reveal('.leads-section .team-grid', { delay: 100 });
-sr.reveal('.events-grid', { delay: 100 });
-sr.reveal('.events-archive', { delay: 100 });
-sr.reveal('.resources-grid', { delay: 100 });
-sr.reveal('.contact-layout', { delay: 100 });
-
-// Footer
-sr.reveal('.footer-container', { delay: 50, distance: '20px' });
-
-const modalOpenButtons = document.querySelectorAll('[data-modal-target]');
-const modalCloseButtons = document.querySelectorAll('.modal-close-btn');
-
-function openModal(modal) {
-    if (modal == null) return;
-    modal.classList.add('active');
-}
-
-function closeModal(modal) {
-    if (modal == null) return;
-    modal.classList.remove('active');
-}
-
-modalOpenButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const modal = document.querySelector(button.dataset.modalTarget);
-        openModal(modal);
-    });
-});
-
-modalCloseButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const modal = button.closest('.modal');
-        closeModal(modal);
-    });
-});
-
-
-
-const backToTopButton = document.querySelector('.back-to-top-btn');
-
-
-const handleScroll = () => {
-
-    if (window.scrollY > 300) {
-     
-        backToTopButton.classList.add('active');
-    } else {
-  
-        backToTopButton.classList.remove('active');
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+        revealed.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
     }
-};
 
-
-window.addEventListener('scroll', handleScroll);
-
-// Countdown Timer Logic
-const countdowns = document.querySelectorAll('[data-countdown-target]');
-
-countdowns.forEach((countdown) => {
-    const targetDateValue = countdown.getAttribute('data-countdown-target');
-    if (!targetDateValue) return;
-
-    const targetDate = new Date(targetDateValue).getTime();
-    if (Number.isNaN(targetDate)) return;
-
-    const daysEl = countdown.querySelector('.days');
-    const hoursEl = countdown.querySelector('.hours');
-    const minutesEl = countdown.querySelector('.minutes');
-    const secondsEl = countdown.querySelector('.seconds');
-
-    const updateCountdown = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance < 0) {
-            clearInterval(updateCountdown);
-            countdown.innerHTML = "<div class='time-box' style='width:100%'><span>EVENT LIVE!</span></div>";
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        if (daysEl) daysEl.textContent = days < 10 ? '0' + days : days.toString();
-        if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours.toString();
-        if (minutesEl) minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes.toString();
-        if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds.toString();
-    }, 1000);
-});
-
-// Mobile Menu Logic
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const siteNav = document.querySelector('.site-nav');
-const dropdowns = document.querySelectorAll('.dropdown');
-
-if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        siteNav.classList.toggle('active');
-    });
-}
-
-// Mobile Dropdown Logic
-dropdowns.forEach(dropdown => {
-    const dropbtn = dropdown.querySelector('.dropbtn');
-    if (dropbtn) {
-        dropbtn.addEventListener('click', (e) => {
-            if (window.innerWidth <= 900) {
-                // Prevent default behavior
-                e.preventDefault();
-                
-                // Close other dropdowns
-                dropdowns.forEach(otherDropdown => {
-                    if (otherDropdown !== dropdown) {
-                        otherDropdown.classList.remove('active');
-                    }
-                });
-                
-                dropdown.classList.toggle('active');
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
             }
         });
-    }
-});
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (siteNav && mobileMenuBtn && !siteNav.contains(e.target) && !mobileMenuBtn.contains(e.target) && window.innerWidth <= 900) {
-        siteNav.classList.remove('active');
-        mobileMenuBtn.classList.remove('active');
-    }
-});
+    revealed.forEach(function (el) { observer.observe(el); });
+})();
+
+// ---- Back to top ----
+(function () {
+    var backToTopButton = document.querySelector('.back-to-top-btn');
+    if (!backToTopButton) return;
+
+    window.addEventListener('scroll', function () {
+        backToTopButton.classList.toggle('active', window.scrollY > 300);
+    });
+})();
+
+// ---- Countdown timers ----
+(function () {
+    var countdowns = document.querySelectorAll('[data-countdown-target]');
+
+    countdowns.forEach(function (countdown) {
+        var targetDateValue = countdown.getAttribute('data-countdown-target');
+        if (!targetDateValue) return;
+
+        var targetDate = new Date(targetDateValue).getTime();
+        if (Number.isNaN(targetDate)) return;
+
+        var daysEl = countdown.querySelector('.days');
+        var hoursEl = countdown.querySelector('.hours');
+        var minutesEl = countdown.querySelector('.minutes');
+        var secondsEl = countdown.querySelector('.seconds');
+
+        var pad = function (n) { return n < 10 ? '0' + n : String(n); };
+
+        var updateCountdown = setInterval(function () {
+            var distance = targetDate - Date.now();
+
+            if (distance < 0) {
+                clearInterval(updateCountdown);
+                countdown.innerHTML = "<div class='time-box' style='width:100%'><span>EVENT LIVE!</span></div>";
+                return;
+            }
+
+            var days = Math.floor(distance / 86400000);
+            var hours = Math.floor((distance % 86400000) / 3600000);
+            var minutes = Math.floor((distance % 3600000) / 60000);
+            var seconds = Math.floor((distance % 60000) / 1000);
+
+            if (daysEl) daysEl.textContent = pad(days);
+            if (hoursEl) hoursEl.textContent = pad(hours);
+            if (minutesEl) minutesEl.textContent = pad(minutes);
+            if (secondsEl) secondsEl.textContent = pad(seconds);
+        }, 1000);
+    });
+})();

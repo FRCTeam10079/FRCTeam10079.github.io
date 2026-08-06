@@ -3,128 +3,99 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Our Team | ArrowDynamics</title>
+    <title>Meet the Team | ArrowDynamics</title>
+    <meta name="description" content="The student leaders and mentors behind ArrowDynamics, FRC Team 10079 at Bothell High School.">
     <link rel="stylesheet" href="style.css">
-
-
+    <link rel="icon" type="image/png" href="images/arrowdynamicslogo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="content-wrap">
-        <?kt navbarHtml ?>
+        <script src="layout.js" data-page="team"></script>
 
         <main class="site-content">
-            <section class="team-hero">
-                <h1>Meet The Team</h1>
+            <section class="page-hero">
+                <p class="eyebrow">About Us</p>
+                <h1>Meet the Team</h1>
                 <p>The students, mentors, and minds behind the robot.</p>
             </section>
 
-            <section class="leads-section">
-                <h2 class="section-heading">Leadership</h2>
+            <section class="leads-section reveal">
+                <h2 class="section-heading">Student Leadership</h2>
                 <div class="team-grid">
                     <div class="member-card">
-                        <img src="images/Adrian-Image.jpg" alt="Team Member Adrian">
                         <h4>Adrian</h4>
                         <p class="member-role">President</p>
+                        <!-- EDIT HERE: replace with a real quote from Adrian -->
+                        <p class="member-quote">&ldquo;Quote coming soon.&rdquo;</p>
                     </div>
                     <div class="member-card">
-                        <img src="images/Risith-Image.jpg" alt="Team Member Risith">
                         <h4>Risith</h4>
                         <p class="member-role">Software Lead</p>
+                        <!-- EDIT HERE: replace with a real quote from Risith -->
+                        <p class="member-quote">&ldquo;Quote coming soon.&rdquo;</p>
                     </div>
                     <div class="member-card">
-                        <img src="images/Kiet-Image.jpg" alt="Team Member Kiet">
                         <h4>Kiet</h4>
                         <p class="member-role">Mechanical Lead</p>
+                        <!-- EDIT HERE: replace with a real quote from Kiet -->
+                        <p class="member-quote">&ldquo;Quote coming soon.&rdquo;</p>
                     </div>
                     <div class="member-card">
-                        <img src="images/placeholder.png" alt="Team Member Brianna">
                         <h4>Brianna</h4>
                         <p class="member-role">Media Lead</p>
+                        <!-- EDIT HERE: replace with a real quote from Brianna -->
+                        <p class="member-quote">&ldquo;Quote coming soon.&rdquo;</p>
                     </div>
                     <div class="member-card">
-                        <img src="images/placeholder.png" alt="Team Member Rena">
                         <h4>Rena</h4>
                         <p class="member-role">Business Lead</p>
+                        <!-- EDIT HERE: replace with a real quote from Rena -->
+                        <p class="member-quote">&ldquo;Quote coming soon.&rdquo;</p>
                     </div>
                     <div class="member-card">
-                        <img src="images/placeholder.png" alt="Team Member Alex">
                         <h4>Alex</h4>
                         <p class="member-role">Scouting Lead</p>
+                        <!-- EDIT HERE: replace with a real quote from Alex -->
+                        <p class="member-quote">&ldquo;Quote coming soon.&rdquo;</p>
                     </div>
                     <div class="member-card">
-                        <img src="images/placeholder.png" alt="Team Member Kyle">
                         <h4>Kyle</h4>
                         <p class="member-role">Outreach Lead</p>
+                        <!-- EDIT HERE: replace with a real quote from Kyle -->
+                        <p class="member-quote">&ldquo;Quote coming soon.&rdquo;</p>
                     </div>
                 </div>
             </section>
+
+            <section class="leads-section reveal">
+                <h2 class="section-heading">Mentors</h2>
+                <div class="team-grid">
+                    <div class="member-card">
+                        <h4>Kevin Finney</h4>
+                        <p class="member-role">Lead Mentor</p>
+                        <p class="member-email"><a href="mailto:Kfinney@nsd.org">Kfinney@nsd.org</a></p>
+                    </div>
+                    <div class="member-card">
+                        <h4>Christina deVidal</h4>
+                        <p class="member-role">Team Administrator and Co-Lead Mentor</p>
+                        <p class="member-email"><a href="mailto:cdevidal@nsd.org">cdevidal@nsd.org</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="page-section reveal" style="text-align: center;">
+                <p class="section-intro" style="margin: 0 auto 1.5rem;">
+                    Want to see your name here? We are always welcoming new members.
+                </p>
+                <a href="join.html" class="cta-button">Join the Team</a>
+            </section>
         </main>
     </div>
-    <a href="#" class="back-to-top-btn" aria-label="Back to top">↑</a>
-    <footer class="site-footer-bottom">
-        <div class="footer-container">
-            <a href="#" class="social-icon">
-                <img src="images/instagram-icon.svg" alt="Instagram">
-            </a>
-            <p class="copyright-text">&copy; 2026 Team 10079 Robotics | Contact: roboticsbothell@gmail.com</p>
-        </div>
-    </footer>
-
-    <div class="modal" id="software-modal">
-        <div class="modal-overlay modal-close-btn"></div>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Software Team</h3>
-                <button class="modal-close-btn">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="team-grid modal-leads">
-                    <div class="member-card">
-                        <img src="images/Risith-Image.jpg" alt="Team Member Risith">
-                        <h4>Risith</h4>
-                        <p class="member-role">Software Lead</p>
-                    </div>
-                </div>
-                <ul class="member-list">
-                    <li>
-                        <h4>Nethul</h4>
-                        <p class="member-role">Software and Website Developer</p>
-                    </li>
-                    <li>
-                        <h4>Dhruv</h4>
-                        <p class="member-role">Software</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="hardware-modal">
-        <div class="modal-overlay modal-close-btn"></div>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Hardware Team</h3>
-                <button class="modal-close-btn">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="team-grid modal-leads">
-                    <div class="member-card">
-                        <img src="images/Kiet-Image.jpg" alt="Team Member Kiet">
-                        <h4>Kiet</h4>
-                        <p class="member-role">Hardware Lead</p>
-                    </div>
-                </div>
-                <ul class="member-list">
-                </ul>
-            </div>
-        </div>
-    </div>
-
-<script src="https://unpkg.com/scrollreveal"></script>
-<script src="script.js"></script>
+    <script>renderFooter()</script>
+    <script src="script.js"></script>
 </body>
 </html>

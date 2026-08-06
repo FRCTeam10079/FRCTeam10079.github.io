@@ -3,61 +3,84 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Resources | ArrowDynamics</title>
+    <title>Links | ArrowDynamics</title>
+    <meta name="description" content="Useful links and documents from ArrowDynamics, FRC Team 10079 — robot code, technical binder, business plan, and more.">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="resources.css">
+    <link rel="icon" type="image/png" href="images/arrowdynamicslogo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="content-wrap">
-        <?kt navbarHtml ?>
+        <script src="layout.js" data-page="links"></script>
 
         <main class="site-content">
             <section class="page-hero">
-                <h1>Resources</h1>
-                <p>Find more links!</p>
+                <p class="eyebrow">Resources</p>
+                <h1>Links</h1>
+                <p>Our documents, code, and the best places to follow Team 10079.</p>
             </section>
 
-            <div class="resources-grid">
+            <div class="links-contact reveal">
+                <a href="mailto:roboticsbothell@gmail.com" class="text-link">roboticsbothell@gmail.com</a>
+                <a href="https://www.instagram.com/arrowdynamics10079/" class="text-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.youtube.com/@ad10079" class="text-link" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </div>
 
-     
+            <div class="resources-grid reveal">
                 <a href="https://github.com/FRCTeam10079" class="resource-card" target="_blank" rel="noopener noreferrer">
-                    <img src="images/placeholder.png" class="card-icon" alt="GitHub Organization">
+                    <img src="images/placeholder.png" class="card-icon" alt="">
                     <h3 class="card-title">Our GitHub Organization</h3>
-                    <p class="card-description">See our past robot code</p>
+                    <p class="card-description">See our robot code, past and present.</p>
                 </a>
 
-
                 <a href="images/Copy%20of%20ArrowDynamics%2010079%20TechBinder%202026.pdf" class="resource-card" target="_blank" rel="noopener noreferrer">
-                    <img src="images/placeholder.png" class="card-icon" alt="Software Tech Binder">
+                    <img src="images/placeholder.png" class="card-icon" alt="">
                     <h3 class="card-title">Technical Binder</h3>
                     <p class="card-description">Our full technical documentation for design, build, and software.</p>
                 </a>
-                
-           
+
                 <a href="images/2025-2026%20Business%20Plan.pdf" class="resource-card" target="_blank" rel="noopener noreferrer">
-                    <img src="images/placeholder.png" class="card-icon" alt="Business Plan PDF">
+                    <img src="images/placeholder.png" class="card-icon" alt="">
                     <h3 class="card-title">Business Plan</h3>
                     <p class="card-description">Read our current business plan and team strategy.</p>
                 </a>
 
-            
-                
+                <a href="constitution.html" class="resource-card">
+                    <img src="images/placeholder.png" class="card-icon" alt="">
+                    <h3 class="card-title">Club Constitution</h3>
+                    <p class="card-description">Read the BHS Robotics Club constitution.</p>
+                </a>
 
+                <a href="newsletters.html" class="resource-card">
+                    <img src="images/placeholder.png" class="card-icon" alt="">
+                    <h3 class="card-title">Newsletters</h3>
+                    <p class="card-description">Updates for families, mentors, sponsors, and supporters.</p>
+                </a>
+
+                <a href="https://www.firstinspires.org/robotics/frc" class="resource-card" target="_blank" rel="noopener noreferrer">
+                    <img src="images/placeholder.png" class="card-icon" alt="">
+                    <h3 class="card-title">FIRST Inspires</h3>
+                    <p class="card-description">The official FIRST Robotics Competition website.</p>
+                </a>
+
+                <a href="https://www.thebluealliance.com/team/10079" class="resource-card" target="_blank" rel="noopener noreferrer">
+                    <img src="images/placeholder.png" class="card-icon" alt="">
+                    <h3 class="card-title">The Blue Alliance</h3>
+                    <p class="card-description">Match results, event data, and media for Team 10079.</p>
+                </a>
+
+                <a href="https://www.statbotics.io/team/10079" class="resource-card" target="_blank" rel="noopener noreferrer">
+                    <img src="images/placeholder.png" class="card-icon" alt="">
+                    <h3 class="card-title">Statbotics</h3>
+                    <p class="card-description">Performance analytics and predictions for Team 10079.</p>
+                </a>
             </div>
         </main>
     </div>
-
-    <footer class="site-footer-bottom">
-        <div class="footer-container">
-            <a href="#" class="social-icon">
-                <img src="images/instagram-icon.svg" alt="Instagram">
-            </a>
-            <p class="copyright-text">&copy; 2026 Team 10079 Robotics | Contact: roboticsbothell@gmail.com</p>
-        </div>
-    </footer>
+    <script>renderFooter()</script>
+    <script src="script.js"></script>
 </body>
 </html>

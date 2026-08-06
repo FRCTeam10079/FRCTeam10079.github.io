@@ -1,0 +1,6 @@
+.git
+.github
+.gitignore
+.vscode
+.DS_Store
+build/

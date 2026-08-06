@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page Not Found | ArrowDynamics</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/arrowdynamicslogo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="content-wrap">
+        <script src="/layout.js"></script>
+
+        <main class="site-content">
+            <section class="page-hero">
+                <p class="eyebrow">Error 404</p>
+                <h1>Page Not Found</h1>
+                <p>That page rolled off the field. Let's get you back to the pits.</p>
+            </section>
+
+            <section class="error-panel">
+                <!-- Scout bot: drawn inline so it scales cleanly and picks up the
+                     theme colors. Animations live in style.css (section 23) and
+                     only run when the visitor has not asked for reduced motion. -->
+                <div class="error-bot">
+                    <svg viewBox="58 -6 144 262" role="img" aria-label="A small robot hovering, scanning for the missing page">
+                        <ellipse class="bot-shadow" cx="130" cy="240" rx="54" ry="8"></ellipse>
+
+                        <g class="bot">
+                            <!-- antenna -->
+                            <line class="bot-stalk" x1="130" y1="27" x2="130" y2="46"></line>
+                            <circle class="bot-light" cx="130" cy="20" r="7"></circle>
+
+                            <!-- arms: drawn first so the body covers the shoulder
+                                 joints; the right one waves you back home -->
+                            <rect class="bot-plate bot-arm" x="70" y="138" width="18" height="46" rx="9"></rect>
+                            <rect class="bot-plate bot-arm bot-arm-wave" x="172" y="138" width="18" height="46" rx="9"></rect>
+
+                            <!-- head -->
+                            <rect class="bot-plate" x="68" y="70" width="12" height="26" rx="6"></rect>
+                            <rect class="bot-plate" x="180" y="70" width="12" height="26" rx="6"></rect>
+                            <rect class="bot-plate" x="78" y="44" width="104" height="76" rx="20"></rect>
+
+                            <!-- visor -->
+                            <rect class="bot-screen" x="92" y="58" width="76" height="48" rx="12"></rect>
+                            <clipPath id="visor">
+                                <rect x="92" y="58" width="76" height="48" rx="12"></rect>
+                            </clipPath>
+                            <g clip-path="url(#visor)">
+                                <rect class="bot-scan" x="92" y="52" width="76" height="7"></rect>
+                            </g>
+                            <rect class="bot-eye" x="112" y="74" width="10" height="16" rx="5"></rect>
+                            <rect class="bot-eye" x="138" y="74" width="10" height="16" rx="5"></rect>
+
+                            <!-- neck + body -->
+                            <rect class="bot-plate" x="122" y="116" width="16" height="18" rx="4"></rect>
+                            <rect class="bot-plate" x="84" y="130" width="92" height="66" rx="16"></rect>
+
+                            <!-- chest panel wearing the team arrow -->
+                            <rect class="bot-screen" x="98" y="140" width="64" height="34" rx="8"></rect>
+                            <polygon class="bot-arrow" points="110,154 134,154 134,148 150,157 134,166 134,160 110,160"></polygon>
+
+                            <g class="bot-leds">
+                                <circle class="bot-led" cx="116" cy="184" r="3"></circle>
+                                <circle class="bot-led" cx="130" cy="184" r="3"></circle>
+                                <circle class="bot-led" cx="144" cy="184" r="3"></circle>
+                            </g>
+
+                            <!-- hover jets -->
+                            <rect class="bot-plate" x="100" y="196" width="20" height="10" rx="4"></rect>
+                            <rect class="bot-plate" x="140" y="196" width="20" height="10" rx="4"></rect>
+                            <rect class="bot-jet" x="104" y="206" width="12" height="20" rx="6"></rect>
+                            <rect class="bot-jet" x="144" y="206" width="12" height="20" rx="6"></rect>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="error-copy">
+                    <p class="error-code">404</p>
+                    <p class="error-note">
+                        Our scout bot swept every corner of the site and came back empty. The page
+                        was probably moved, renamed, or never built in the first place.
+                    </p>
+                    <div class="cta-row">
+                        <a href="/index.html" class="cta-button">Back to Home</a>
+                        <a href="/contact.html" class="cta-button secondary">Tell Us What Broke</a>
+                    </div>
+                    <div class="action-links">
+                        <a href="/robots.html" class="action-link">Our Robots</a>
+                        <a href="/calendar.html" class="action-link">Events &amp; Meetings</a>
+                        <a href="/join.html" class="action-link">Join the Team</a>
+                    </div>
+                </div>
+            </section>
+            <section class="game-panel">
+                <h2 class="section-heading">Offline Practice Field</h2>
+                <p class="section-intro">
+                    The bot has time to kill. Jump the cones, duck the drone, see how far it gets.
+                </p>
+
+                <div class="game-stage">
+                    <canvas id="runner" tabindex="0" role="img"
+                            aria-describedby="runner-hint"
+                            aria-label="A side-scrolling game: our FRC robot runs along the field, jumping traffic cones and crates and ducking under a drone."></canvas>
+                </div>
+
+                <p class="game-hint" id="runner-hint">Click the field (or tab to it) to start &middot; Space or &uarr; to jump &middot; &darr; to duck</p>
+
+                <div class="game-touch">
+                    <button type="button" class="game-btn" data-action="jump">Jump</button>
+                    <button type="button" class="game-btn" data-action="duck">Duck</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>renderFooter()</script>
+    <script src="/script.js"></script>
+    <script src="/game-404.js"></script>
+</body>
+</html>

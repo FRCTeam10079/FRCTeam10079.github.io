@@ -1,122 +1,132 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate</title>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Support Us | ArrowDynamics</title>
+    <meta name="description" content="Support ArrowDynamics, FRC Team 10079 — donate through FIRST Washington, sponsor the team, or give directly through Bothell High School.">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="donate.css">
+    <link rel="icon" type="image/png" href="images/arrowdynamicslogo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Roboto:wght@700;900&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="content-wrap">
-        <?kt navbarHtml ?>
+        <script src="layout.js" data-page="support"></script>
 
         <main class="site-content">
             <section class="page-hero">
-                <h1>Donate!</h1>
-                <p>Donate to FIRST Washington in support of BHS ArrowDynamics</p>
+                <p class="eyebrow">Support Us</p>
+                <h1>Your Support is Important</h1>
+                <p>
+                    Your generous contributions let us keep teaching students the skills and values
+                    that are the foundation of the FIRST community, and keep our robot on the field.
+                </p>
             </section>
 
-            <section class="donation-container">
-                <div class="donation-content">
-                    <h2 class="donation-title">Donate Through FIRST Washington</h2>
-                    <p class="donation-instructions">
-                        You can use the button below to donate to Team 10079's booster account.
-                        FirstWA is the statewide robotics nonprofit that houses our booster account
-                        and is a 501c3, so all donations are tax-deductible.
+            <section class="support-points reveal">
+                <div class="support-point">
+                    <h3>Student-Powered, Community-Funded</h3>
+                    <p>
+                        ArrowDynamics is run by students with the support of volunteer mentors. The
+                        team depends on fundraising, grants, sponsorships, and donations to cover
+                        competition registration, materials, and tools for every season.
                     </p>
-
-                    <a
-                        href="https://secure.givelively.org/donate/washington-first-robotics/frc-10079" target="_blank" rel="noopener noreferrer"
-                        class="cta-button"
-                    >
-                        Donate
-                    </a>
+                </div>
+                <div class="support-point">
+                    <h3>Robots are Complicated</h3>
+                    <p>
+                        Every year we design, machine, wire, and program a brand-new competition
+                        robot in a matter of weeks. Motors, controllers, metal, electronics, and
+                        event fees add up fast, your support is what makes it possible.
+                    </p>
                 </div>
             </section>
 
-            <section class="donation-container">
-                <div class="donation-content">
-                    <h2 class="donation-title">Become a Sponsor</h2>
-                    <p class="donation-instructions">
-                        Thank you for considering sponsoring us. We greatly appreciate your generosity. Please complete the form below. We will be happy to come to your business and conduct a demonstration or give a presentation of our team.
-                    </p>
-                    <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLScSdcQFbYjaHHs5gVnrRfIVISCk_aHpDh_8tA3sHzHzNSoGjQ/viewform?usp=header"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="cta-button"
-                    >
-                        Sponsor Sign Up
-                    </a>
-                </div>
-            </section>
-
-            <section class="donation-container">
-                <div class="donation-content">
-                    <h2 class="donation-title">Donate Directly To Bothell High School</h2>
-
-                    <p class="donation-instructions">
-                        Donate directly to our Bothell High School Robotics account through the Northshore School District.
-                        If you are not a family with a student in NSD, you will need to sign up for a guest account first.
-                    </p>
-
-                    <div class="donation-links-row">
-                        <a
-                            href="https://wa-northshore.intouchreceipting.com/signup.aspx"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="cta-button secondary"
-                        >
-                            Register Guest Account
-                        </a>
-                        <a
-                            href="https://wa-northshore.intouchreceipting.com/signin"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="cta-button"
-                        >
-                            Sign In To TouchBase
-                        </a>
+            <section class="events-container reveal">
+                <h2 class="section-heading">Ways to Give</h2>
+                <div class="options-grid">
+                    <div class="option-card">
+                        <h3>Donate Through FIRST Washington</h3>
+                        <p>
+                            Your gift goes to FIRST Washington in support of Bothell High School
+                            ArrowDynamics.
+                        </p>
+                        <ul>
+                            <li>Instant donation via credit card</li>
+                            <li>Goes to Team 10079's booster account</li>
+                            <li>FIRST WA is a 501(c)(3) nonprofit, every donation is tax-deductible</li>
+                        </ul>
+                        <div class="cta-row">
+                            <a href="https://secure.givelively.org/donate/washington-first-robotics/frc-10079" target="_blank" rel="noopener noreferrer" class="cta-button success">Donate Here</a>
+                        </div>
                     </div>
 
-                    <p class="donation-instructions">
-                        After you submit your account request, you will receive a verification email.
-                        Once your email is verified, you can sign in.
-                    </p>
-
-                    <div class="donation-path">
-                        <p class="path-title">Use this path after signing in:</p>
-                        <p class="path-steps">Items At All Schools -> High school -> Bothell High School -> Robotics -> Donations for Robotics*</p>
+                    <div class="option-card">
+                        <h3>Become a Sponsor</h3>
+                        <p>
+                            Thank you for considering sponsoring us. Complete the form below and we
+                            will be happy to visit your business for a robot demonstration or a
+                            team presentation.
+                        </p>
+                        <ul>
+                            <li>Sponsorship levels for every budget</li>
+                            <li>Logo recognition on our website and robot</li>
+                            <li>Demos and presentations for your organization</li>
+                        </ul>
+                    
+                        <div class="cta-row">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLScSdcQFbYjaHHs5gVnrRfIVISCk_aHpDh_8tA3sHzHzNSoGjQ/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="cta-button">Sponsor Sign Up</a>
+                            <a href="sponsors.html" class="cta-button secondary">Our Sponsors</a>
+                        </div>
                     </div>
 
-                    <p class="donation-note">
-                        Please note: The school district charges a nominal processing fee of $2.95,
-                        which is added to your donation before checkout.
-                    </p>
+                    <div class="option-card">
+                        <h3>Donate Directly to Bothell High School</h3>
+                        <p>
+                            Give straight to our Bothell High School Robotics account through the
+                            Northshore School District's TouchBase system. If you don't have a
+                            student in NSD, register a guest account first.
+                        </p>
+                        <div class="donation-path">
+                            <p class="path-title">Use this path after signing in:</p>
+                            <p class="path-steps">Items At All Schools &rarr; High School &rarr; Bothell High School &rarr; Robotics &rarr; Donations for Robotics</p>
+                        </div>
+                        <p class="option-note">
+                            The school district adds a $2.95 processing fee to your donation before
+                            checkout.
+                        </p>
+                        <div class="cta-row">
+                            <a href="https://wa-northshore.intouchreceipting.com/signup.aspx" target="_blank" rel="noopener noreferrer" class="cta-button secondary">Register Guest Account</a>
+                            <a href="https://wa-northshore.intouchreceipting.com/signin" target="_blank" rel="noopener noreferrer" class="cta-button">Sign In to TouchBase</a>
+                        </div>
+                    </div>
+
+                    <div class="option-card">
+                        <h3>Fundraising Opt-Out</h3>
+                        <p>
+                            Taking part in team fundraising is a choice. Northshore School District
+                            policy and state law let any student or family opt out, download the
+                            notice, fill it out, and return it to a team mentor.
+                        </p>
+                        <div class="cta-row">
+                            <a href="images/Fundraiser%20Parent%20Opt-Out%20Notice%20Fillable.pdf" target="_blank" rel="noopener noreferrer" class="cta-button secondary">Fundraiser Opt-Out Form</a>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <section class="page-section reveal" style="text-align: center;">
+                <p class="section-intro" style="margin: 0 auto 1.5rem;">
+                    Questions about donating or sponsoring? We'd love to talk.
+                </p>
+                <a href="contact.html" class="cta-button secondary">Contact Us</a>
             </section>
         </main>
     </div>
-    <a href="#" class="back-to-top-btn" aria-label="Back to top">↑</a>
-    <footer class="site-footer-bottom">
-        <div class="footer-container">
-            <a href="#" class="social-icon">
-                <img src="images/instagram-icon.svg" alt="Instagram">
-            </a>
-            <p class="copyright-text">&copy; 2026 Team 10079 Robotics | Contact: roboticsbothell@gmail.com</p>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>renderFooter()</script>
     <script src="script.js"></script>
 </body>
 </html>
