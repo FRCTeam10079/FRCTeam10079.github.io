@@ -77,3 +77,70 @@
         }, 1000);
     });
 })();
+
+// ---- Newsletter year filter + search ----
+(function () {
+    var list = document.querySelector('[data-newsletter-list]');
+    if (!list) return;
+
+    var items = Array.prototype.slice.call(list.querySelectorAll('.newsletter-item'));
+    var chips = Array.prototype.slice.call(document.querySelectorAll('[data-year-filter]'));
+    var searchInput = document.querySelector('[data-newsletter-search]');
+    var emptyMessage = document.querySelector('[data-newsletter-empty]');
+    var activeYear = 'all';
+
+    function applyFilters() {
+        var query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+        var shown = 0;
+
+        items.forEach(function (item) {
+            var yearMatch = activeYear === 'all' || item.getAttribute('data-year') === activeYear;
+            var titleEl = item.querySelector('.newsletter-title');
+            var title = titleEl ? titleEl.textContent.toLowerCase() : '';
+            var searchMatch = query === '' || title.indexOf(query) !== -1;
+            var visible = yearMatch && searchMatch;
+
+            item.hidden = !visible;
+            if (visible) shown++;
+        });
+
+        if (emptyMessage) emptyMessage.hidden = shown > 0;
+    }
+
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            activeYear = chip.getAttribute('data-year-filter');
+            chips.forEach(function (other) {
+                var isActive = other === chip;
+                other.classList.toggle('is-active', isActive);
+                other.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+            applyFilters();
+        });
+    });
+
+    if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
+    }
+
+    applyFilters();
+})();
+
+// ---- Document viewer: swap between the PDF and the formatted version ----
+(function () {
+    var toggle = document.querySelector('[data-doc-toggle]');
+    var pdfView = document.querySelector('[data-doc-pdf]');
+    var formattedView = document.querySelector('[data-doc-formatted]');
+    if (!toggle || !pdfView || !formattedView) return;
+
+    toggle.addEventListener('click', function () {
+        var showFormatted = formattedView.hidden;
+
+        formattedView.hidden = !showFormatted;
+        pdfView.hidden = showFormatted;
+        formattedView.classList.add('is-visible');
+
+        toggle.setAttribute('aria-expanded', showFormatted ? 'true' : 'false');
+        toggle.textContent = showFormatted ? 'View PDF' : 'View Formatted Version';
+    });
+})();

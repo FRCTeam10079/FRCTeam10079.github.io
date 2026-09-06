@@ -23,8 +23,24 @@
                 <p>The governing document of the BHS Robotics Club.</p>
             </section>
 
-            <div class="constitution-doc reveal">
-                <p class="doc-subtitle">Constitution of the Robotics Club of Bothell High School</p>
+            <section class="doc-viewer reveal">
+                <div class="doc-toolbar">
+                    <p class="doc-subtitle">Constitution of the Robotics Club of Bothell High School</p>
+                    <div class="cta-row">
+                        <a href="images/bhs-robotics-constitution.pdf" class="cta-button" target="_blank" rel="noopener noreferrer">Open PDF</a>
+                        <a href="images/bhs-robotics-constitution.pdf" class="cta-button secondary" download>Download</a>
+                        <button type="button" class="cta-button secondary" data-doc-toggle
+                                aria-expanded="false" aria-controls="constitution-formatted">View Formatted Version</button>
+                    </div>
+                </div>
+
+                <div class="doc-pdf" data-doc-pdf>
+                    <iframe class="doc-embed" src="images/bhs-robotics-constitution.pdf"
+                            title="BHS Robotics Club constitution (PDF)"></iframe>
+                </div>
+            </section>
+
+            <div class="constitution-doc reveal" id="constitution-formatted" data-doc-formatted hidden>
 
                 <article>
                     <h2>Preamble</h2>

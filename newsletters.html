@@ -27,38 +27,62 @@
                 <div class="newsletters-card">
                     <h2>Latest Newsletter PDFs</h2>
 
-                    <div class="newsletter-list">
-                        <article class="newsletter-item">
+                    <div class="newsletter-toolbar" data-newsletter-toolbar>
+                        <div class="newsletter-search">
+                            <label for="newsletter-search-input">Search newsletters</label>
+                            <input type="search" id="newsletter-search-input" data-newsletter-search
+                                   placeholder="Search by name, event, or month" autocomplete="off">
+                        </div>
+                        <div class="newsletter-years" role="group" aria-label="Filter newsletters by year">
+                            <button type="button" class="year-chip is-active" data-year-filter="all" aria-pressed="true">All</button>
+                            <button type="button" class="year-chip" data-year-filter="2027" aria-pressed="false">2027</button>
+                            <button type="button" class="year-chip" data-year-filter="2026" aria-pressed="false">2026</button>
+                            <button type="button" class="year-chip" data-year-filter="2025" aria-pressed="false">2025</button>
+                        </div>
+                    </div>
+
+                    <p class="newsletter-empty" data-newsletter-empty hidden>
+                        No newsletters here yet. Try another year or clear your search.
+                    </p>
+
+                    <div class="newsletter-list" data-newsletter-list>
+                        <article class="newsletter-item" data-year="2026">
+                            <h3 class="newsletter-title">April 2026 Auburn Newsletter</h3>
+                            <a class="newsletter-link" href="images/april-2026-newsletter.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+                            <iframe class="newsletter-embed" src="images/april-2026-newsletter.pdf" title="April 2026 Newsletter"></iframe>
+                        </article>
+
+                        <article class="newsletter-item" data-year="2026">
                             <h3 class="newsletter-title">March Glacier Peak 2026 Newsletter</h3>
                             <a class="newsletter-link" href="images/march-glacier-peak-2026-newsletter.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
                             <iframe class="newsletter-embed" src="images/march-glacier-peak-2026-newsletter.pdf" title="March Glacier Peak 2026 Newsletter"></iframe>
                         </article>
 
-                        <article class="newsletter-item">
+                        <article class="newsletter-item" data-year="2026">
                             <h3 class="newsletter-title">February 2026 Newsletter</h3>
                             <a class="newsletter-link" href="images/february-2026-newsletter.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
                             <iframe class="newsletter-embed" src="images/february-2026-newsletter.pdf" title="February 2026 Newsletter"></iframe>
                         </article>
 
-                        <article class="newsletter-item">
+                        <article class="newsletter-item" data-year="2026">
                             <h3 class="newsletter-title">Kickoff and January 2026 Newsletter</h3>
                             <a class="newsletter-link" href="images/kickoff-january-2026-newsletter.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
                             <iframe class="newsletter-embed" src="images/kickoff-january-2026-newsletter.pdf" title="Kickoff and January 2026 Newsletter"></iframe>
                         </article>
 
-                        <article class="newsletter-item">
+                        <article class="newsletter-item" data-year="2025">
                             <h3 class="newsletter-title">November-December 2025 Newsletter</h3>
                             <a class="newsletter-link" href="images/november-december-2025.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
                             <iframe class="newsletter-embed" src="images/november-december-2025.pdf" title="November-December 2025 Newsletter"></iframe>
                         </article>
 
-                        <article class="newsletter-item">
+                        <article class="newsletter-item" data-year="2025">
                             <h3 class="newsletter-title">October 2025 Newsletter</h3>
                             <a class="newsletter-link" href="images/october-2025.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
                             <iframe class="newsletter-embed" src="images/october-2025.pdf" title="October 2025 Newsletter"></iframe>
                         </article>
 
-                        <article class="newsletter-item">
+                        <article class="newsletter-item" data-year="2025">
                             <h3 class="newsletter-title">Boride at Sea 2025</h3>
                             <a class="newsletter-link" href="images/boride-at-sea-2025.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
                             <iframe class="newsletter-embed" src="images/boride-at-sea-2025.pdf" title="Boride at Sea 2025 Newsletter"></iframe>

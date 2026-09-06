@@ -36,8 +36,8 @@
     --color-surface: #121212;          /* panels, cards, header, footer */
     --color-surface-raised: #1a1a1a;   /* hovered dropdown items, subtle lift */
     --color-surface-sunken: #0d0d0d;   /* form inputs, embed wells */
-    --color-accent: #472FFF;           /* electric indigo, links, buttons, highlights */
-    --color-accent-hover: #5a47ff;     /* lighter accent for hover states */
+    --color-accent: #472FFF;           /* #472FFF was previous, electric indigo, links, buttons, highlights */
+    --color-accent-hover: #7634ff;     /* #5a47ff was previous, lighter accent for hover states */
     --color-accent-soft: rgba(71, 47, 255, 0.35); /* glows, focus rings, hover borders */
     --color-text: #EAEAEA;
     --color-text-subtle: rgba(255, 255, 255, 0.65);
@@ -51,7 +51,7 @@
     --font-heading: 'Paladins', 'Inter', system-ui, sans-serif;
 
     /*Type scale*/
-    /* Hero: Paladins is wide (about 1.1em per capital), so the floor is set low
+    /* Hero: Paladins is wide, so the floor is set low
        enough that the wordmark still fits a phone once it breaks at the <wbr>. */
     --text-hero: clamp(2.1rem, 6.5vw, 4.25rem);
     --text-h1: clamp(2.1rem, 4.5vw, 3rem);
@@ -60,7 +60,7 @@
     --text-sm: 0.9rem;
     --text-eyebrow: 0.8rem;
 
-    /*Display tracking — Paladins glyphs overhang their advance widths by about
+    /*Display tracking, Paladins glyphs overhang their advance widths by about
       0.09em, so anything set in it needs at least that much letter-spacing
       before the letters stop touching. Three steps, biggest text to smallest.*/
     --track-display: 0.11em;   /* hero and page h1 */
@@ -1449,10 +1449,88 @@ main.site-content {
     margin-bottom: 2rem;
 }
 
+.newsletter-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.newsletter-search {
+    flex: 1 1 18rem;
+}
+
+.newsletter-search label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.newsletter-search input {
+    width: 100%;
+    background-color: var(--color-surface-sunken);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    color: var(--color-text);
+    padding: 0.7rem 1.15rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-search input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.newsletter-years {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.year-chip {
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    color: var(--color-text-subtle);
+    padding: 0.55rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.year-chip:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+}
+
+.year-chip.is-active {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-text);
+}
+
+.newsletter-empty {
+    color: var(--color-text-subtle);
+    padding: 1.5rem 0;
+}
+
 .newsletter-list {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+}
+
+.newsletter-item[hidden],
+.newsletter-empty[hidden] {
+    display: none;
 }
 
 .newsletter-item {
@@ -1491,6 +1569,46 @@ main.site-content {
 /* ==========================================================================
    16. Constitution document
    ========================================================================== */
+/* PDF-first document viewer (constitution). The formatted HTML version below
+   is hidden until the toolbar toggle swaps it in. */
+.doc-viewer {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    max-width: 60rem;
+    margin: 1rem auto 2rem;
+}
+
+.doc-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.doc-toolbar .doc-subtitle {
+    font-style: italic;
+    color: var(--color-text-subtle);
+    margin: 0;
+}
+
+.doc-embed {
+    display: block;
+    width: 100%;
+    height: 760px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-sunken);
+}
+
+.doc-pdf[hidden],
+.constitution-doc[hidden] {
+    display: none;
+}
+
 .constitution-doc {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -2332,8 +2450,13 @@ html.js .reveal.is-visible {
         justify-content: center;
     }
 
-    .constitution-doc {
+    .constitution-doc,
+    .doc-viewer {
         padding: 2rem 1.5rem;
+    }
+
+    .doc-embed {
+        height: 520px;
     }
 
     .newsletters-card {
