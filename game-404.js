@@ -325,7 +325,7 @@
             fillRound(14, -30, 36, 7, 3, COLOR.metalLit);
         }
 
-        // Chassis — a clean bar above the bumper, lighter so it reads separately
+        // Chassis, a clean bar above the bumper, lighter so it reads separately
         fillRound(7, ducking ? -28 : -34, bodyW - 14, ducking ? 8 : 11, 4, COLOR.metalLit);
 
         // Bumper with the team number
