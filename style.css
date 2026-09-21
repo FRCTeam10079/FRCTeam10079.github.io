@@ -1372,6 +1372,11 @@ main.site-content {
     border-radius: var(--radius-sm);
 }
 
+.slider-track .sponsor-logo {
+    flex: 0 0 250px;
+    margin: 0 1rem;
+}
+
 
 /* ==========================================================================
    14. Links / resource cards

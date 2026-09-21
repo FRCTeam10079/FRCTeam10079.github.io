@@ -98,7 +98,7 @@
     var page = script ? script.dataset.page : '';
 
     // Header is inserted synchronously at the script's position, so it exists
-    // in the DOM before first paint — no flash, no layout shift.
+    // in the DOM before first paint so there is no flash, no layout shift.
     script.insertAdjacentHTML('afterend', HEADER_HTML);
 
     var header = document.querySelector('.site-header');

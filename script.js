@@ -1,5 +1,5 @@
 /* ==========================================================================
-   script.js — page behaviors: scroll reveal, back-to-top, countdowns.
+   script.js has page behaviors: scroll reveal, back-to-top, countdowns.
    (Header/footer/nav behavior lives in layout.js.)
    ========================================================================== */
 
