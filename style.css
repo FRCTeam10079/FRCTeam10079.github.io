@@ -2612,18 +2612,11 @@ html.motion-off * {
 /* ==========================================================================
    23. Responsive
    ========================================================================== */
-@media (max-width: 900px) {
-    .events-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .header-container,
-    .footer-container,
-    main.site-content {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-
+/* Nav now has one more item (Pictures & Videos) than the inline desktop bar
+   has room for once the viewport drops below the container's own max-width,
+   so the hamburger menu has to take over earlier than the general 900px
+   layout breakpoint below - otherwise the links squeeze and wrap. */
+@media (max-width: 1180px) {
     /* Header collapses to logo + hamburger */
     .header-container {
         position: relative;
@@ -2693,6 +2686,19 @@ html.motion-off * {
     .dropbtn {
         width: 100%;
         justify-content: center;
+    }
+}
+
+@media (max-width: 900px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-container,
+    .footer-container,
+    main.site-content {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 
     /* Layout stacks */
