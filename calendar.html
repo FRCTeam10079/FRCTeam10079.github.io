@@ -4,13 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Events and Meetings | ArrowDynamics</title>
+    <link rel="canonical" href="https://www.frcteam10079.org/calendar.html">
     <meta name="description" content="Upcoming competitions, meetings, and past results for ArrowDynamics, FRC Team 10079.">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/arrowdynamicslogo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <!-- Non-blocking: media="print" keeps this off the critical path,
+         then onload promotes it. Falls back to system-ui until it lands. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"></noscript>
 </head>
 <body>
     <div class="content-wrap">
@@ -27,65 +31,41 @@
                 <h2 class="section-heading">Upcoming Events</h2>
 
                 <div class="events-grid">
-                    <div class="event-card">
+                    <article class="event-card">
                         <div class="event-card-header">
-                            <h3 class="event-title">Bordie</h3>
+                            <h3 class="event-title">2027 Season Kickoff</h3>
                             <span class="event-status upcoming">Upcoming</span>
                         </div>
-                        <div class="event-details">
-                            <p class="event-date">October 9-11, 2026</p>
-                            <p class="event-location">Off-season event, Sammamish High School, WA</p>
-                        </div>
-                        <div class="event-countdown">
-                            <span class="countdown-label">Starts in:</span>
-                            <div class="countdown-mini" data-countdown-target="2026-10-09T00:00:00">
+                        <p class="event-date">Saturday, January 9, 2027</p>
+                        <p class="event-location">FIRST season kickoff</p>
+                        <div class="event-countdown" data-countdown-target="2027-01-09T08:00:00-08:00">
+                            <span class="countdown-label">Countdown to kickoff</span>
+                            <div class="countdown-mini">
                                 <div class="time-unit"><span class="days">00</span><em>Days</em></div>
-                                <div class="time-unit"><span class="hours">00</span><em>Hrs</em></div>
-                                <div class="time-unit"><span class="minutes">00</span><em>Min</em></div>
-                                <div class="time-unit"><span class="seconds">00</span><em>Sec</em></div>
+                                <div class="time-unit"><span class="hours">00</span><em>Hours</em></div>
+                                <div class="time-unit"><span class="minutes">00</span><em>Minutes</em></div>
+                                <div class="time-unit"><span class="seconds">00</span><em>Seconds</em></div>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="event-card">
+                    <article class="event-card">
                         <div class="event-card-header">
-                            <h3 class="event-title">Girls Gen</h3>
+                            <h3 class="event-title">PNW District Glacier Peak Event</h3>
                             <span class="event-status upcoming">Upcoming</span>
                         </div>
-                        <div class="event-details">
-                            <p class="event-date">October 17-18, 2026</p>
-                            <p class="event-location">Off-season event, location TBA</p>
-                        </div>
-                        <div class="event-countdown">
-                            <span class="countdown-label">Starts in:</span>
-                            <div class="countdown-mini" data-countdown-target="2026-10-17T00:00:00">
+                        <p class="event-date">Saturday, April 3, 2027</p>
+                        <p class="event-location">Glacier Peak High School, Snohomish, WA</p>
+                        <div class="event-countdown" data-countdown-target="2027-04-03T08:00:00-07:00">
+                            <span class="countdown-label">Countdown to competition</span>
+                            <div class="countdown-mini">
                                 <div class="time-unit"><span class="days">00</span><em>Days</em></div>
-                                <div class="time-unit"><span class="hours">00</span><em>Hrs</em></div>
-                                <div class="time-unit"><span class="minutes">00</span><em>Min</em></div>
-                                <div class="time-unit"><span class="seconds">00</span><em>Sec</em></div>
+                                <div class="time-unit"><span class="hours">00</span><em>Hours</em></div>
+                                <div class="time-unit"><span class="minutes">00</span><em>Minutes</em></div>
+                                <div class="time-unit"><span class="seconds">00</span><em>Seconds</em></div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="event-card">
-                        <div class="event-card-header">
-                            <h3 class="event-title">Block Party</h3>
-                            <span class="event-status upcoming">Upcoming</span>
-                        </div>
-                        <div class="event-details">
-                            <p class="event-date">October 24-25, 2026</p>
-                            <p class="event-location">Off-season event, location TBA</p>
-                        </div>
-                        <div class="event-countdown">
-                            <span class="countdown-label">Starts in:</span>
-                            <div class="countdown-mini" data-countdown-target="2026-10-24T00:00:00">
-                                <div class="time-unit"><span class="days">00</span><em>Days</em></div>
-                                <div class="time-unit"><span class="hours">00</span><em>Hrs</em></div>
-                                <div class="time-unit"><span class="minutes">00</span><em>Min</em></div>
-                                <div class="time-unit"><span class="seconds">00</span><em>Sec</em></div>
-                            </div>
-                        </div>
-                    </div>
+                    </article>
                 </div>
             </section>
 
@@ -95,6 +75,8 @@
                     All official meetings, build sessions, and competition dates live in this calendar.
                 </p>
                 <!-- Don't edit, google calendar integration -->
+                 <!-- Maybe we could add a calender that fetches from google calendar
+                  but makes it into arrowdynamics format -->
                 <div class="calendar-container">
                     <iframe
                         src="https://calendar.google.com/calendar/embed?src=roboticsbothell%40gmail.com&ctz=America%2FLos_Angeles"
@@ -149,6 +131,26 @@
                             <span class="result-award silver">Completed</span>
                         </div>
                     </div>
+
+                    <div class="archive-item">
+                        <div class="archive-details">
+                            <h4 class="archive-title">Bordie</h4>
+                            <p class="archive-date">October 9-11, 2026, Sammamish High School, WA</p>
+                        </div>
+                        <div class="archive-result">
+                            <span class="result-award silver">Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="archive-item">
+                        <div class="archive-details">
+                            <h4 class="archive-title">Block Party</h4>
+                            <p class="archive-date">October 24-25, 2026</p>
+                        </div>
+                        <div class="archive-result">
+                            <span class="result-award silver">Completed</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -172,7 +174,7 @@
                             <p class="archive-date">April 27-30, 2025, Houston, TX</p>
                         </div>
                         <div class="archive-result">
-                            <span class="result-award">2nd best auto</span>
+                            <span class="result-award">2nd best auto/rookie team</span>
                         </div>
                     </div>
                 </div>

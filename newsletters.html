@@ -4,13 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Newsletters | ArrowDynamics</title>
+    <link rel="canonical" href="https://www.frcteam10079.org/newsletters.html">
     <meta name="description" content="Team newsletters from ArrowDynamics, FRC Team 10079 — updates for families, mentors, sponsors, and supporters.">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/arrowdynamicslogo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <!-- Non-blocking: media="print" keeps this off the critical path,
+         then onload promotes it. Falls back to system-ui until it lands. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"></noscript>
 </head>
 <body>
     <div class="content-wrap">

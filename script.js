@@ -7,12 +7,30 @@
 
 // ---- Scroll reveal (IntersectionObserver; content stays visible without JS) ----
 (function () {
+    // Tells layout.js's watchdog that reveal is handled, so it leaves html.js on
+    window.revealReady = true;
+
     var revealed = document.querySelectorAll('.reveal');
     if (!revealed.length) return;
 
-    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reducedMotion || !('IntersectionObserver' in window)) {
+    function showAll() {
         revealed.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    /* Crawlers and auditors render the page once without ever scrolling, so an
+       IntersectionObserver never fires for anything below the fold and those
+       sections stay at opacity 0. That is what breaks the Search Console live
+       test and the Lighthouse screenshot. Everyone here gets the identical
+       markup either way, only the animation is skipped. */
+    var ua = navigator.userAgent || '';
+    var isCrawler = navigator.webdriver === true || /bot|crawl|spider|slurp|lighthouse|headless|inspectiontool|googleother|pagespeed|preview|validator|facebookexternalhit|embedly|quora link preview|screaming frog/i.test(ua);
+
+    // layout.js has already folded the OS setting and the footer toggle into
+    // this class, so read it rather than the media query on its own.
+    var motionOff = document.documentElement.classList.contains('motion-off');
+
+    if (isCrawler || motionOff || !('IntersectionObserver' in window)) {
+        showAll();
         return;
     }
 
@@ -26,6 +44,22 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     revealed.forEach(function (el) { observer.observe(el); });
+
+    /* Second safety net, for a real browser whose observer never delivers:
+       anything still hidden once the page has been loaded a while is shown.
+       Sections the visitor has not reached yet are untouched, so scrolling
+       still animates normally. */
+    window.addEventListener('load', function () {
+        window.setTimeout(function () {
+            revealed.forEach(function (el) {
+                if (el.classList.contains('is-visible')) return;
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('is-visible');
+                    observer.unobserve(el);
+                }
+            });
+        }, 1200);
+    });
 })();
 
 // ---- Back to top ----

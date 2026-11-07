@@ -4,13 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Support Us | ArrowDynamics</title>
+    <link rel="canonical" href="https://www.frcteam10079.org/donate.html">
     <meta name="description" content="Support ArrowDynamics, FRC Team 10079 — donate through FIRST Washington, sponsor the team, or give directly through Bothell High School.">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/arrowdynamicslogo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <!-- Non-blocking: media="print" keeps this off the critical path,
+         then onload promotes it. Falls back to system-ui until it lands. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"></noscript>
 </head>
 <body>
     <div class="content-wrap">
@@ -47,6 +51,17 @@
 
             <section class="events-container reveal">
                 <h2 class="section-heading">Ways to Give</h2>
+                <div class="payment-notice" role="note">
+                    <p class="payment-notice-title">A note on payment security</p>
+                    <p>
+                        The donation and payment pages linked below are not part of our website
+                        and are not affiliated with it. They are run by outside organizations:
+                        Give Lively handles donations for FIRST Washington, and the Northshore
+                        School District runs TouchBase. This site never asks for or stores your
+                        card or bank details. Before you pay, check that the address bar shows
+                        one of those official sites.
+                    </p>
+                </div>
                 <div class="options-grid">
                     <div class="option-card">
                         <h3>Donate Through FIRST Washington</h3>

@@ -4,13 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>About Us | ArrowDynamics</title>
+    <link rel="canonical" href="https://www.frcteam10079.org/about.html">
     <meta name="description" content="ArrowDynamics is FRC Team 10079 from Bothell High School — learn what we do, how our season works, and what drives us.">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/arrowdynamicslogo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <!-- Non-blocking: media="print" keeps this off the critical path,
+         then onload promotes it. Falls back to system-ui until it lands. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"></noscript>
 </head>
 <body>
     <div class="content-wrap">
@@ -24,7 +28,13 @@
             </section>
 
             <div class="wide-photo reveal">
-                <img src="images/10079 Team Picture.jpg" alt="The ArrowDynamics team">
+                <picture>
+                    <source type="image/webp"
+                            srcset="images/opt/team-800.webp 800w, images/opt/team-1200.webp 1200w, images/opt/team-1600.webp 1600w"
+                            sizes="(min-width: 1200px) 1072px, 92vw">
+                    <img src="images/opt/team-1600.jpg" alt="The ArrowDynamics team"
+                         width="1600" height="1067" decoding="async" fetchpriority="high">
+                </picture>
             </div>
 
             <section class="page-section reveal">

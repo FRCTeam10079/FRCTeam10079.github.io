@@ -15,15 +15,15 @@
     }
 
     var COLOR = {
-        accent: token('--color-accent', '#472FFF'),
-        accentLit: token('--color-accent-hover', '#5a47ff'),
+        accent: token('--color-accent', '#5cb8ff'),
+        accentLit: token('--color-accent-hover', '#9dd6ff'),
         text: token('--color-text', '#EAEAEA'),
         border: token('--color-border', '#333333'),
         gold: token('--color-award-gold', '#f1c40f'),
         subtle: token('--color-text-subtle', 'rgba(255,255,255,0.65)'),
-        // Sprite art colors — bumper red and metal greys are artwork, not theme.
-        bumper: '#c0392b',
-        bumperDark: '#8f2c20',
+        // Sprite art colors, bumper blue and metal greys are artwork, not theme.
+        bumper: '#1f4fbf',
+        bumperDark: '#163a8c',
         metal: '#2b2b30',
         metalLit: '#3d3d45',
         tire: '#1a1a1a',
@@ -91,7 +91,7 @@
     function saveBest(value) {
         try {
             window.localStorage.setItem('ad10079-runner-best', String(value));
-        } catch (e) { /* private mode — high score just won't persist */ }
+        } catch (e) { /* private mode, high score just won't persist */ }
     }
 
     // ---- Rounded rectangle helper (older engines lack ctx.roundRect) ----
@@ -185,7 +185,7 @@
         overAt = Date.now();
         var final = Math.floor(score);
         if (final > best) { best = final; saveBest(best); }
-        if (hint) hint.textContent = 'Game over — score ' + final + '. Press space or tap to try again.';
+        if (hint) hint.textContent = 'Game over, score ' + final + '. Press space or tap to try again.';
     }
 
     document.addEventListener('keydown', function (e) {
@@ -195,7 +195,7 @@
         if (!isJump && !isDuck) return;
 
         // Space and the arrows only belong to the game while it is genuinely
-        // in play — otherwise they must keep scrolling the page as usual.
+        // in play, otherwise they must keep scrolling the page as usual.
         var engaged = document.activeElement === canvas || (state === 'running' && inView);
         if (!engaged) return;
 
@@ -289,7 +289,7 @@
 
         ctx.save();
         ctx.translate(ROBOT_X, base);
-        // Tip forward on the way up, back on the way down — reads as momentum.
+        // Tip forward on the way up, back on the way down, reads as momentum.
         if (robot.airborne) {
             ctx.translate(bodyW / 2, -20);
             ctx.rotate((robot.vy < 0 ? -5 : 4) * Math.PI / 180);

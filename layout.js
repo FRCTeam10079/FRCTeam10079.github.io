@@ -1,5 +1,5 @@
 /* ==========================================================================
-   layout.js — shared header, nav, and footer for every page.
+   layout.js: shared header, nav, and footer for every page.
    Edit the nav or footer ONCE here and every page updates.
 
    Usage per page:
@@ -8,14 +8,65 @@
      <script>renderFooter()</script>                      ← where the footer goes
 
    data-page values: home, about, team, history, impact-report, newsletters,
-   constitution, location, contact, robots, calendar, join, support, sponsors, links
+   constitution, location, contact, robots, calendar, media, join, support, sponsors, links
    ========================================================================== */
 
 (function () {
     'use strict';
 
+    var root = document.documentElement;
+
     // Signals to CSS that JS is running (scroll-reveal only hides content then)
-    document.documentElement.classList.add('js');
+    root.classList.add('js');
+
+    /* ---- Motion preference -------------------------------------------------
+       Resolved here, at the top of <body>, so the class is on <html> before
+       anything paints and there is no flash of movement. The stored choice
+       from the footer toggle wins; with nothing stored we follow the OS.
+       See the "Reduced motion" block in style.css for what the classes do. */
+    var MOTION_KEY = 'ad-motion';
+
+    function storedMotion() {
+        try {
+            return window.localStorage.getItem(MOTION_KEY);
+        } catch (e) {
+            return null;            // private mode / storage disabled
+        }
+    }
+
+    function osPrefersReduce() {
+        return window.matchMedia &&
+               window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    // true when animations should be suppressed, whatever the reason
+    function motionIsReduced() {
+        var stored = storedMotion();
+        if (stored === 'reduce') return true;
+        if (stored === 'full') return false;
+        return osPrefersReduce();
+    }
+
+    function applyMotion() {
+        var stored = storedMotion();
+        var reduced = motionIsReduced();
+        root.classList.toggle('motion-off', reduced);
+        // Only needed to out-rank the prefers-reduced-motion media query
+        root.classList.toggle('motion-on', stored === 'full');
+    }
+
+    applyMotion();
+
+    /* ---- Scroll-reveal watchdog --------------------------------------------
+       html.js hides every .reveal section until script.js observes it. If
+       script.js never runs (blocked, failed to load, bad cache) that hidden
+       state is permanent and the page looks half empty. script.js sets the
+       flag below as soon as its observer is attached; if it has not within
+       three seconds we drop html.js and the content falls back to visible. */
+    window.setTimeout(function () {
+        if (window.revealReady) return;
+        root.classList.remove('js');
+    }, 3000);
 
     var HEADER_HTML =
         '<header class="site-header">' +
@@ -44,6 +95,7 @@
         '      </div>' +
         '      <a href="robots.html" data-nav="robots">Robots</a>' +
         '      <a href="calendar.html" data-nav="calendar">Calendar</a>' +
+        '      <a href="media.html" data-nav="media">Pictures &amp; Videos</a>' +
         '      <a href="join.html" data-nav="join">Join</a>' +
         '      <div class="dropdown">' +
         '        <button class="dropbtn" aria-haspopup="true">Support Us</button>' +
@@ -88,7 +140,8 @@
         '      </div>' +
         '    </div>' +
         '    <div class="footer-bottom-bar">' +
-        '      <p class="copyright-text">&copy; 2026 ArrowDynamics &mdash; FRC Team 10079 &middot; Bothell High School Robotics Club &middot; <a href="mailto:roboticsbothell@gmail.com">roboticsbothell@gmail.com</a></p>' +
+        '      <p class="copyright-text">&copy; 2026 ArrowDynamics, FRC Team 10079 &middot; Bothell High School Robotics Club &middot; <a href="mailto:roboticsbothell@gmail.com">roboticsbothell@gmail.com</a></p>' +
+        '      <button type="button" class="motion-toggle" data-motion-toggle aria-pressed="false">Reduce motion</button>' +
         '    </div>' +
         '  </div>' +
         '</footer>' +
@@ -155,5 +208,52 @@
     // Called by each page at the footer position
     window.renderFooter = function () {
         document.currentScript.insertAdjacentHTML('beforebegin', FOOTER_HTML);
+        wireMotionToggle();
     };
+
+    function wireMotionToggle() {
+        var toggle = document.querySelector('[data-motion-toggle]');
+        if (!toggle) return;
+
+        function sync() {
+            var reduced = motionIsReduced();
+            toggle.setAttribute('aria-pressed', reduced ? 'true' : 'false');
+            toggle.title = reduced
+                ? 'Animations are off. Click to turn them back on.'
+                : 'Animations are on. Click to reduce motion.';
+        }
+
+        toggle.addEventListener('click', function () {
+            var next = motionIsReduced() ? 'full' : 'reduce';
+            try {
+                window.localStorage.setItem(MOTION_KEY, next);
+            } catch (e) {
+                /* Storage unavailable: the choice still applies to this page. */
+            }
+            applyMotion();
+            sync();
+
+            // Turning motion back on should not replay every reveal as a jump
+            // cut, so anything already on screen stays put.
+            if (next === 'full') {
+                document.querySelectorAll('.reveal').forEach(function (el) {
+                    if (el.getBoundingClientRect().top < window.innerHeight) {
+                        el.classList.add('is-visible');
+                    }
+                });
+            }
+        });
+
+        // Follow the OS setting live, but only while no explicit choice is stored
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-reduced-motion: reduce)')
+                .addEventListener('change', function () {
+                    if (storedMotion()) return;
+                    applyMotion();
+                    sync();
+                });
+        }
+
+        sync();
+    }
 })();

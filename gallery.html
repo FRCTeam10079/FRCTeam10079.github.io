@@ -4,12 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Gallery</title>
+        <link rel="canonical" href="https://www.frcteam10079.org/gallery.html">
         <meta name="description" content="A gallery of images from ArrowDynamics, FRC Team 10079 at Bothell High School.">
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/png" href="images/arrowdynamicslogo.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+        <!-- Non-blocking: media="print" keeps this off the critical path,
+             then onload promotes it. Falls back to system-ui until it lands. -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"></noscript>
 
 </head>
 <body>
@@ -26,23 +30,43 @@
         <section class="gallery-section reveal">
             <div class="gallery-grid">
                 <figure class="gallery-item">
-                    <img src="images/10079%20Team%20Picture.jpg" alt="ArrowDynamics team group photo">
+                    <picture>
+                        <source type="image/webp"
+                                srcset="images/opt/team-800.webp 800w, images/opt/team-1200.webp 1200w"
+                                sizes="(min-width: 1000px) 340px, (min-width: 620px) 45vw, 92vw">
+                        <img src="images/opt/team-1600.jpg" alt="ArrowDynamics team group photo" decoding="async">
+                    </picture>
                     <figcaption>ArrowDynamics Team 10079</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <img src="images/teamphoto.jpg" alt="ArrowDynamics students with their robot">
+                    <picture>
+                        <source type="image/webp"
+                                srcset="images/opt/teamphoto-800.webp 800w, images/opt/teamphoto-1200.webp 1200w"
+                                sizes="(min-width: 1000px) 340px, (min-width: 620px) 45vw, 92vw">
+                        <img src="images/teamphoto.jpg" alt="ArrowDynamics students with their robot" loading="lazy" decoding="async">
+                    </picture>
                     <figcaption>Building together</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <img src="images/Robot%202026.jpg" alt="ArrowDynamics 2026 competition robot">
+                    <picture>
+                        <source type="image/webp"
+                                srcset="images/opt/robot-2026-800.webp 800w, images/opt/robot-2026-1200.webp 1200w"
+                                sizes="(min-width: 1000px) 340px, (min-width: 620px) 45vw, 92vw">
+                        <img src="images/Robot%202026.jpg" alt="ArrowDynamics 2026 competition robot" loading="lazy" decoding="async">
+                    </picture>
                     <figcaption>Our 2026 competition robot</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <img src="images/arrowdynamics-frc-team-robot.jpeg" alt="ArrowDynamics robot at an event">
+                    <picture>
+                        <source type="image/webp"
+                                srcset="images/opt/team-robot-800.webp 800w, images/opt/team-robot-1200.webp 1200w"
+                                sizes="(min-width: 1000px) 340px, (min-width: 620px) 45vw, 92vw">
+                        <img src="images/arrowdynamics-frc-team-robot.jpeg" alt="ArrowDynamics robot at an event" loading="lazy" decoding="async">
+                    </picture>
                     <figcaption>On the field</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <img src="images/arrowdynamicslogo.png" alt="ArrowDynamics team logo">
+                    <img src="images/arrowdynamicslogo.png" alt="ArrowDynamics team logo" loading="lazy" decoding="async">
                     <figcaption>ArrowDynamics</figcaption>
                 </figure>
             </div>

@@ -1,0 +1,12 @@
+# ArrowDynamics, FRC Team 10079
+# Note: this is the crawler file. The page about our competition robots
+# is robots.html.
+
+User-agent: *
+Allow: /
+
+# Redirect stub and an unfinished page: no value in the index.
+Disallow: /events.html
+Disallow: /subteams.html
+
+Sitemap: https://www.frcteam10079.org/sitemap.xml

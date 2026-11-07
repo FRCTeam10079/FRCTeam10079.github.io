@@ -4,13 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sponsors | ArrowDynamics</title>
+    <link rel="canonical" href="https://www.frcteam10079.org/sponsors.html">
     <meta name="description" content="The sponsors who power ArrowDynamics, FRC Team 10079 — thank you.">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/arrowdynamicslogo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <!-- Non-blocking: media="print" keeps this off the critical path,
+         then onload promotes it. Falls back to system-ui until it lands. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"></noscript>
 </head>
 <body>
     <div class="content-wrap">
@@ -29,31 +33,34 @@
             <section class="sponsor-tier reveal">
                 <h2 class="sponsor-tier-heading">Team Sponsors</h2>
                 <div class="sponsor-grid">
-                    <a class="sponsor-logo" href="https://www.nasa.gov/" target="_blank" rel="noopener noreferrer"><img src="images/logos/nasa.png" alt="NASA"></a>
-                    <a class="sponsor-logo" href="https://www.boeing.com/" target="_blank" rel="noopener noreferrer"><img src="images/logos/boeing.png" alt="Boeing"></a>
-                    <a class="sponsor-logo" href="https://www.dunnlumber.com/" target="_blank" rel="noopener noreferrer"><img src="images/logos/dunn-lumber.png" alt="Dunn Lumber"></a>
-                    <a class="sponsor-logo" href="https://www.firstinspires.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/first.png" alt="FIRST"></a>
-                    <a class="sponsor-logo" href="https://www.fluke.com/" target="_blank" rel="noopener noreferrer"><img src="images/logos/fluke.png" alt="Fluke"></a>
-                    <a class="sponsor-logo" href="https://www.apple.com/" target="_blank" rel="noopener noreferrer"><img src="images/logos/apple.png" alt="Apple"></a>
-                    <a class="sponsor-logo" href="https://www.romac.com/" target="_blank" rel="noopener noreferrer"><img src="images/logos/romac.png" alt="Romac Industries"></a>
-                    <a class="sponsor-logo" href="https://www.uhaul.com/" target="_blank" rel="noopener noreferrer"><img src="images/logos/uhaul.png" alt="U-Haul"></a>
-                    <a class="sponsor-logo" href="https://nwfolklife.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/folklife.png" alt="Folklife"></a>
-                    <a class="sponsor-logo" href="https://www.ghaasfoundation.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/ghaas-foundation.png" alt="GHAAS Foundation"></a>
-                    <a class="sponsor-logo" href="https://speea.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/speea.png" alt="SPEEA"></a>
-                    <a class="sponsor-logo" href="https://www.rotarypnw.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/rotary.png" alt="Rotary Club"></a>
-                    <a>Neal Brenner</a>
-                    <a class="sponsor-logo" href="https://www.woodinvilleprint.com/" target="_blank" rel="noopener noreferrer"><img src="images/logos/woodinville-print.png" alt="Woodinville Print"></a>
-                    <a class="sponsor-logo" href="https://www.flukemetal.com/" target="_blank" rel="noopener noreferrer"><img src="images/logos/flukemetal.png" alt="Fluke Metal"></a>  
-                    <a class="sponsor-logo" href="https://www.118robonauts.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/118.png" alt="118 Robonauts"></a>
-                    <a class="sponsor-logo" href="https://www.onlinemetals.com/?srsltid=AU7gw4VQei3bSJpkcb2uFx8HH2TJMLftWGQ1Bj8rO_gdsJ8_s-fOX6SF" target="_blank" rel="noopener noreferrer"><img src="images/logos/online-metals.png" alt="Online Metals"></a>
-                    <a class="sponsor-logo" href="" target="_blank" rel="noopener noreferrer"><img src="images/logos/bccraftsman.png" alt="BC Craftsman"></a>
-                    <a class="sponsor-logo" href="https://www.intuitive-foundation.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/intuitive-foundation.png" alt="Intuitive Foundation"></a>
-                    <a class="sponsor-logo" href="https://bothell.nsd.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/bothell-high-school.png" alt="Bothell High School"></a>
-                    <a class="sponsor-logo" href="https://www.nsd.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/northshore-school-district.png" alt="Northshore School District"></a>
-                    <a class="sponsor-logo" href="https://firstwa.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/first-wa.png" alt="FIRST Washington"></a>
-                    <a class="sponsor-logo" href="https://bothellptsa.givebacks.com/" target="_blank" rel="noopener noreferrer"><img src="images/logos/bothell-ptsa.png" alt="Bothell PTSA"></a>
-                    <a class="sponsor-logo" href="https://www.electroimpact.com/" target="_blank" rel="noopener noreferrer"><img src="images/logos/electroimpact.png" alt="Electroimpact"></a>
-                    <a class="sponsor-logo" href="https://www.northshoreschoolsfoundation.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/northshore-schools-foundation.png" alt="Northshore Schools Foundation"></a>
+                    <a class="sponsor-logo" href="https://www.nasa.gov/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/nasa.webp" alt="NASA" width="300" height="180" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.boeing.com/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/boeing.webp" alt="Boeing" width="300" height="180" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.dunnlumber.com/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/dunn-lumber.webp" alt="Dunn Lumber" width="300" height="180" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.firstinspires.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/first.webp" alt="FIRST" width="300" height="180" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.fluke.com/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/fluke.webp" alt="Fluke" width="300" height="180" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.apple.com/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/apple.webp" alt="Apple" width="300" height="180" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.romac.com/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/romac.webp" alt="Romac Industries" width="300" height="180" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.uhaul.com/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/uhaul.webp" alt="U-Haul" width="300" height="158" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://nwfolklife.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/folklife.webp" alt="Folklife" width="300" height="100" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.ghaasfoundation.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/ghaas-foundation.webp" alt="GHAAS Foundation" width="300" height="137" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://speea.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/speea.webp" alt="SPEEA" width="300" height="124" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.rotarypnw.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/rotary.webp" alt="Rotary Club" width="300" height="65" loading="lazy" decoding="async"></a>
+                    <div class="sponsor-person" aria-label="Neal Brenner, Individual supporter">
+                        <span class="sponsor-person-name">Neal Brenner</span>
+                        <span class="sponsor-person-role">Individual Sponsor</span>
+                    </div>
+                    <a class="sponsor-logo" href="https://www.woodinvilleprint.com/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/woodinville-print.webp" alt="Woodinville Print" width="300" height="54" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.flukemetal.com/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/flukemetal.webp" alt="Fluke Metal" width="300" height="249" loading="lazy" decoding="async"></a>  
+                    <a class="sponsor-logo" href="https://www.118robonauts.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/118.webp" alt="118 Robonauts" width="296" height="204" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.onlinemetals.com/?srsltid=AU7gw4VQei3bSJpkcb2uFx8HH2TJMLftWGQ1Bj8rO_gdsJ8_s-fOX6SF" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/online-metals.webp" alt="Online Metals" width="300" height="62" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/bccraftsman.webp" alt="BC Craftsman" width="300" height="137" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.intuitive-foundation.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/intuitive-foundation.webp" alt="Intuitive Foundation" width="300" height="143" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://bothell.nsd.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/bothell-high-school.webp" alt="Bothell High School" width="276" height="278" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.nsd.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/northshore-school-district.webp" alt="Northshore School District" width="170" height="144" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://firstwa.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/first-wa.webp" alt="FIRST Washington" width="286" height="210" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://bothellptsa.givebacks.com/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/bothell-ptsa.webp" alt="Bothell PTSA" width="300" height="282" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.electroimpact.com/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/electroimpact.webp" alt="Electroimpact" width="300" height="150" loading="lazy" decoding="async"></a>
+                    <a class="sponsor-logo" href="https://www.northshoreschoolsfoundation.org/" target="_blank" rel="noopener noreferrer"><img src="images/opt/logos/northshore-schools-foundation.webp" alt="Northshore Schools Foundation" width="300" height="76" loading="lazy" decoding="async"></a>
 
                 </div>
             </section>
