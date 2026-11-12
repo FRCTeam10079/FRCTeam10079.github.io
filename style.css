@@ -1022,6 +1022,7 @@ main a:not([class]):hover,
     text-transform: uppercase;
     letter-spacing: var(--track-title);
     line-height: 1.2;
+    min-width: 0;
 }
 
 .event-status {
@@ -1066,7 +1067,7 @@ main a:not([class]):hover,
 
 .countdown-mini {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.6rem;
 }
 
@@ -1162,6 +1163,48 @@ main a:not([class]):hover,
 
 .result-award.silver {
     background-color: var(--color-award-silver);
+}
+
+/* Collapsible past-events sections, closed by default to keep the page short */
+.events-collapsible summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    user-select: none;
+    margin-bottom: 0;
+}
+
+.events-collapsible summary::-webkit-details-marker {
+    display: none;
+}
+
+.events-collapsible summary::after {
+    content: '';
+    width: 0;
+    height: 0;
+    flex: none;
+    border-style: solid;
+    border-width: 7px 0 7px 11px;
+    border-color: transparent transparent transparent var(--color-accent);
+    transition: transform 0.2s ease;
+}
+
+.events-collapsible[open] summary::after {
+    transform: rotate(90deg);
+}
+
+.events-collapsible summary:hover {
+    color: var(--color-accent-hover);
+}
+
+.events-collapsible .events-archive {
+    margin-top: 1.5rem;
+}
+
+.events-collapsible .events-archive + .events-archive {
+    margin-top: 1rem;
 }
 
 /* Google Calendar embed */
