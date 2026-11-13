@@ -561,6 +561,7 @@ main a:not([class]):hover,
 .robot-card,
 .stat-card,
 .newsletters-card,
+.media-filter-card,
 .info-panel {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -1171,40 +1172,123 @@ main a:not([class]):hover,
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem 1.25rem 2rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
     user-select: none;
-    margin-bottom: 0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .events-collapsible summary::-webkit-details-marker {
     display: none;
 }
 
-.events-collapsible summary::after {
-    content: '';
-    width: 0;
-    height: 0;
-    flex: none;
-    border-style: solid;
-    border-width: 7px 0 7px 11px;
-    border-color: transparent transparent transparent var(--color-accent);
-    transition: transform 0.2s ease;
-}
-
-.events-collapsible[open] summary::after {
-    transform: rotate(90deg);
+.events-collapsible summary:hover,
+.events-collapsible[open] summary {
+    border-color: var(--color-accent);
 }
 
 .events-collapsible summary:hover {
-    color: var(--color-accent-hover);
+    box-shadow: var(--shadow-lift);
+}
+
+.events-collapsible summary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+.events-collapsible summary .section-heading {
+    margin-bottom: 0;
+}
+
+/* Show/Hide pill; the summary itself already tells screen readers expanded or collapsed */
+.collapse-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex: none;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-accent-soft);
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.collapse-toggle::before {
+    content: 'Show';
+}
+
+.events-collapsible[open] .collapse-toggle::before {
+    content: 'Hide';
+}
+
+.collapse-toggle::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 8px;
+    border-color: transparent transparent transparent currentColor;
+    transition: transform 0.2s ease;
+}
+
+.events-collapsible[open] .collapse-toggle::after {
+    transform: rotate(90deg);
+}
+
+.events-collapsible summary:hover .collapse-toggle {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
 }
 
 .events-collapsible .events-archive {
     margin-top: 1.5rem;
 }
 
-.events-collapsible .events-archive + .events-archive {
-    margin-top: 1rem;
+@keyframes archive-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.events-collapsible[open] .archive-item {
+    animation: archive-in 0.4s cubic-bezier(0.5, 0, 0, 1) both;
+}
+
+.events-collapsible[open] .archive-item:nth-child(2) { animation-delay: 0.06s; }
+.events-collapsible[open] .archive-item:nth-child(3) { animation-delay: 0.12s; }
+.events-collapsible[open] .archive-item:nth-child(4) { animation-delay: 0.18s; }
+.events-collapsible[open] .archive-item:nth-child(5) { animation-delay: 0.24s; }
+.events-collapsible[open] .archive-item:nth-child(n+6) { animation-delay: 0.3s; }
+
+/* Smooth height open/close where the browser can animate to height: auto */
+@supports (interpolate-size: allow-keywords) {
+    .events-collapsible {
+        interpolate-size: allow-keywords;
+    }
+
+    .events-collapsible::details-content {
+        height: 0;
+        overflow: clip;
+        transition: height 0.4s cubic-bezier(0.5, 0, 0, 1), content-visibility 0.4s allow-discrete;
+    }
+
+    .events-collapsible[open]::details-content {
+        height: auto;
+    }
 }
 
 /* Google Calendar embed */
@@ -1625,7 +1709,8 @@ main a:not([class]):hover,
     margin-bottom: 2rem;
 }
 
-.newsletter-toolbar {
+.newsletter-toolbar,
+.media-toolbar {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -1634,18 +1719,21 @@ main a:not([class]):hover,
     margin-bottom: 2rem;
 }
 
-.newsletter-search {
+.newsletter-search,
+.media-search {
     flex: 1 1 18rem;
 }
 
-.newsletter-search label {
+.newsletter-search label,
+.media-search label {
     display: block;
     font-size: var(--text-sm);
     font-weight: 600;
     margin-bottom: 0.4rem;
 }
 
-.newsletter-search input {
+.newsletter-search input,
+.media-search input {
     width: 100%;
     background-color: var(--color-surface-sunken);
     border: 1px solid var(--color-border);
@@ -1657,19 +1745,22 @@ main a:not([class]):hover,
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.newsletter-search input:focus {
+.newsletter-search input:focus,
+.media-search input:focus {
     outline: none;
     border-color: var(--color-accent);
     box-shadow: 0 0 0 3px var(--color-accent-soft);
 }
 
-.newsletter-years {
+.newsletter-years,
+.media-events {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
 
-.year-chip {
+.year-chip,
+.event-chip {
     background-color: transparent;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-pill);
@@ -1682,18 +1773,21 @@ main a:not([class]):hover,
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-.year-chip:hover {
+.year-chip:hover,
+.event-chip:hover {
     border-color: var(--color-accent);
     color: var(--color-text);
 }
 
-.year-chip.is-active {
+.year-chip.is-active,
+.event-chip.is-active {
     background-color: var(--color-accent);
     border-color: var(--color-accent);
     color: var(--color-on-accent);
 }
 
-.newsletter-empty {
+.newsletter-empty,
+.media-empty {
     color: var(--color-text-subtle);
     padding: 1.5rem 0;
 }
@@ -1705,7 +1799,8 @@ main a:not([class]):hover,
 }
 
 .newsletter-item[hidden],
-.newsletter-empty[hidden] {
+.newsletter-empty[hidden],
+.media-empty[hidden] {
     display: none;
 }
 
@@ -2245,8 +2340,13 @@ html.js .reveal.is-visible {
         transition: none;
     }
 
-    html:not(.motion-on) .slider-track {
+    html:not(.motion-on) .slider-track,
+    html:not(.motion-on) .events-collapsible .archive-item {
         animation: none;
+    }
+
+    html:not(.motion-on) .events-collapsible::details-content {
+        transition: none;
     }
 
     html:not(.motion-on) * {
@@ -2263,8 +2363,13 @@ html.motion-off .reveal {
     transition: none;
 }
 
-html.motion-off .slider-track {
+html.motion-off .slider-track,
+html.motion-off .events-collapsible .archive-item {
     animation: none;
+}
+
+html.motion-off .events-collapsible::details-content {
+    transition: none;
 }
 
 html.motion-off * {
@@ -2538,6 +2643,29 @@ html.motion-off * {
     margin-top: 1rem;
 }
 
+/* Media page search + event filter, shares the newsletter toolbar styles */
+.media-filter {
+    padding: 1rem 0;
+}
+
+.media-filter-card {
+    padding: 2rem 2.5rem;
+}
+
+.media-filter-card .media-toolbar {
+    margin-bottom: 0;
+}
+
+.media-search label {
+    font-size: var(--text-h3);
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.media-empty {
+    padding-bottom: 0;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
@@ -2773,6 +2901,10 @@ html.motion-off * {
         justify-content: flex-start;
     }
 
+    .events-collapsible summary {
+        padding: 1rem 1.25rem;
+    }
+
     .robot-card {
         grid-template-columns: 1fr;
     }
@@ -2805,7 +2937,8 @@ html.motion-off * {
         height: 520px;
     }
 
-    .newsletters-card {
+    .newsletters-card,
+    .media-filter-card {
         padding: 1.5rem;
     }
 

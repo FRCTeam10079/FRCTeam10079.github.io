@@ -160,6 +160,60 @@
     applyFilters();
 })();
 
+// ---- Media gallery event filter + search ----
+(function () {
+    var searchInput = document.querySelector('[data-media-search]');
+    if (!searchInput) return;
+
+    var sections = Array.prototype.slice.call(document.querySelectorAll('[data-media-section]'));
+    var chips = Array.prototype.slice.call(document.querySelectorAll('[data-event-filter]'));
+    var emptyMessage = document.querySelector('[data-media-empty]');
+    var activeEvent = 'all';
+
+    function applyFilter() {
+        var query = searchInput.value.trim().toLowerCase();
+        var shownSections = 0;
+
+        sections.forEach(function (section) {
+            var eventName = section.getAttribute('data-media-section') || '';
+            var label = eventName.toLowerCase();
+            var eventMatch = activeEvent === 'all' || eventName === activeEvent;
+            var items = Array.prototype.slice.call(section.querySelectorAll('.gallery-item'));
+            var shownItems = 0;
+
+            items.forEach(function (item) {
+                var captionEl = item.querySelector('figcaption');
+                var caption = captionEl ? captionEl.textContent.toLowerCase() : '';
+                var searchMatch = query === '' || label.indexOf(query) !== -1 || caption.indexOf(query) !== -1;
+                var visible = eventMatch && searchMatch;
+
+                item.hidden = !visible;
+                if (visible) shownItems++;
+            });
+
+            section.hidden = shownItems === 0;
+            if (shownItems > 0) shownSections++;
+        });
+
+        if (emptyMessage) emptyMessage.hidden = shownSections > 0;
+    }
+
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            activeEvent = chip.getAttribute('data-event-filter');
+            chips.forEach(function (other) {
+                var isActive = other === chip;
+                other.classList.toggle('is-active', isActive);
+                other.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+            applyFilter();
+        });
+    });
+
+    searchInput.addEventListener('input', applyFilter);
+    applyFilter();
+})();
+
 // ---- Document viewer: swap between the PDF and the formatted version ----
 (function () {
     var toggle = document.querySelector('[data-doc-toggle]');

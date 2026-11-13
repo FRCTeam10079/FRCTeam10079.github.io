@@ -21,10 +21,30 @@
                 <section class="page-hero">
                     <p class="eyebrow">Media</p>
                     <h1>Pictures &amp; Videos</h1>
-                    <p>Block Party pictures and videos will be added here.</p>
+                    <p>Photos and videos from Block Party and Bordie.</p>
                 </section>
 
-                <section class="gallery-section reveal">
+                <section class="media-filter reveal">
+                    <div class="media-filter-card">
+                        <div class="media-toolbar">
+                            <div class="media-search">
+                                <label for="media-search-input">Search photos &amp; videos</label>
+                                <input type="search" id="media-search-input" data-media-search
+                                       placeholder="Search by caption or event" autocomplete="off">
+                            </div>
+                            <div class="media-events" role="group" aria-label="Filter by event">
+                                <button type="button" class="event-chip is-active" data-event-filter="all" aria-pressed="true">All</button>
+                                <button type="button" class="event-chip" data-event-filter="Block Party" aria-pressed="false">Block Party</button>
+                                <button type="button" class="event-chip" data-event-filter="Bordie" aria-pressed="false">Bordie</button>
+                            </div>
+                        </div>
+                        <p class="media-empty" data-media-empty hidden>
+                            Nothing here yet. Try another event or clear your search.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="gallery-section reveal" data-media-section="Block Party">
                     <h2 class="section-heading">Block Party</h2>
                     <div class="gallery-grid">
                         <figure class="gallery-item"><a href="images/robot in pits.jpg" target="_blank" rel="noopener"><img src="images/robot in pits.jpg" alt="Block Party robot"></a><figcaption>In the pits</figcaption></figure>
@@ -32,19 +52,32 @@
                         <figure class="gallery-item"><a href="images/placing robot.jpg" target="_blank" rel="noopener"><img src="images/placing robot.jpg" alt="Block Party robot"></a><figcaption>Placing robot on the field</figcaption></figure>
                         <figure class="gallery-item"><a href="images/strategy.jpg" target="_blank" rel="noopener"><img src="images/strategy.jpg" alt="Block Party robot"></a><figcaption>Strategy</figcaption></figure>
                         <figure class="gallery-item"><a href="images/team cheer.jpg" target="_blank" rel="noopener"><img src="images/team cheer.jpg" alt="Block Party robot"></a><figcaption>Driver celebration</figcaption></figure>
-                        <figure class="gallery-item"><a href="images/picking out batteries.jpg" target="_blank" rel="noopener"><img src="images/picking out batteries.jpg" alt="Block Party robot"></a><figcaption>Picking out batteries</figcaption></figure>
+                        <figure class="gallery-item"><a href="images/Robot Shooting Crop.jpg" target="_blank" rel="noopener"><img src="images/Robot Shooting Crop.jpg" alt="Block Party robot"></a><figcaption>Robot Shooting</figcaption></figure>
                         <figure class="gallery-item"><a href="images/queue.jpg" target="_blank" rel="noopener"><img src="images/queue.jpg" alt="Block Party robot"></a><figcaption>Queueing</figcaption></figure>
                         <figure class="gallery-item"><a href="images/placing robot on field 2.jpg" target="_blank" rel="noopener"><img src="images/placing robot on field 2.jpg" alt="Block Party robot"></a><figcaption>Placing robot on the field #2</figcaption></figure>
                         <figure class="gallery-item"><a href="images/waiting to put robot on the field.jpg" target="_blank" rel="noopener"><img src="images/waiting to put robot on the field.jpg" alt="Block Party robot"></a><figcaption>Waiting to put the robot on the field</figcaption></figure>
                     </div>
                 </section>
 
-                <section class="gallery-section reveal">
+                <section class="gallery-section reveal" data-media-section="Block Party">
                     <h2 class="section-heading">Block Party Videos</h2>
                     <div class="gallery-grid">
-                        <figure class="gallery-item video-slot"><video controls preload="metadata"><source src="videos/robot shooting.mp4" type="video/mp4">Your browser does not support video playback.</video><figcaption>10079 Shooting</figcaption></figure>
-                        <figure class="gallery-item video-slot"><video controls preload="metadata"><source src="videos/taking robot off field.MOV" type="video/mp4">Your browser does not support video playback.</video><figcaption>Taking robot off field</figcaption></figure>
-                        <figure class="gallery-item video-slot"><video controls preload="metadata"><source src="videos/intaking and shooting.mp4" type="video/mp4">Your browser does not support video playback.</video><figcaption>Intaking and shooting</figcaption></figure>
+                        <figure class="gallery-item video-slot"><video controls preload="metadata"><source src="videos/opt/robot-shooting.mp4" type="video/mp4">Your browser does not support video playback.</video><figcaption>10079 Shooting</figcaption></figure>
+                        <figure class="gallery-item video-slot"><video controls preload="metadata"><source src="videos/opt/taking-robot-off-field.mp4" type="video/mp4">Your browser does not support video playback.</video><figcaption>Taking robot off field</figcaption></figure>
+                        <figure class="gallery-item video-slot"><video controls preload="metadata"><source src="videos/opt/intaking-and-shooting.mp4" type="video/mp4">Your browser does not support video playback.</video><figcaption>Intaking and shooting</figcaption></figure>
+                    </div>
+                </section>
+
+                <section class="gallery-section reveal" data-media-section="Bordie">
+                    <h2 class="section-heading">Bordie</h2>
+                    <!-- Placeholder: replace images/placeholder-4x3.jpg with your photo in both href and src, then edit the alt text and caption -->
+                    <div class="gallery-grid">
+                        <figure class="gallery-item"><a href="images/robot on field bordie.jpg" target="_blank" rel="noopener"><img src="images/robot on field bordie.jpg" alt="Bordie photo coming soon"></a><figcaption>Robot on field</figcaption></figure>
+                        <figure class="gallery-item"><a href="images/placeholder-4x3.jpg" target="_blank" rel="noopener"><img src="images/placeholder-4x3.jpg" alt="Bordie photo coming soon"></a><figcaption>Caption for photo 2</figcaption></figure>
+                        <figure class="gallery-item"><a href="images/placeholder-4x3.jpg" target="_blank" rel="noopener"><img src="images/placeholder-4x3.jpg" alt="Bordie photo coming soon"></a><figcaption>Caption for photo 3</figcaption></figure>
+                        <figure class="gallery-item"><a href="images/placeholder-4x3.jpg" target="_blank" rel="noopener"><img src="images/placeholder-4x3.jpg" alt="Bordie photo coming soon"></a><figcaption>Caption for photo 4</figcaption></figure>
+                        <figure class="gallery-item"><a href="images/placeholder-4x3.jpg" target="_blank" rel="noopener"><img src="images/placeholder-4x3.jpg" alt="Bordie photo coming soon"></a><figcaption>Caption for photo 5</figcaption></figure>
+                        <figure class="gallery-item"><a href="images/placeholder-4x3.jpg" target="_blank" rel="noopener"><img src="images/placeholder-4x3.jpg" alt="Bordie photo coming soon"></a><figcaption>Caption for photo 6</figcaption></figure>
                     </div>
                 </section>
             </main>
