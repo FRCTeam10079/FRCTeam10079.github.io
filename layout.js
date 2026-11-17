@@ -72,7 +72,7 @@
         '<header class="site-header">' +
         '  <div class="header-container">' +
         '    <a href="index.html" class="brand">' +
-        '      <img src="images/arrowdynamicslogo.png" alt="" class="brand-logo">' +
+        '      <img src="images/opt/logos/Ad%20Square.svg" alt="" class="brand-logo">' +
         '      <span class="brand-name">ArrowDynamics<span class="brand-sub">FRC Team 10079</span></span>' +
         '    </a>' +
         '    <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">' +
