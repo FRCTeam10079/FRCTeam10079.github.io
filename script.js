@@ -1,155 +1,234 @@
+/* ==========================================================================
+   script.js has page behaviors: scroll reveal, back-to-top, countdowns.
+   (Header/footer/nav behavior lives in layout.js.)
+   ========================================================================== */
 
-const sr = ScrollReveal({
-    origin: 'bottom',
-    distance: '30px',     
-    duration: 600,         
-    delay: 100,            
-    reset: false,         
-    easing: 'cubic-bezier(0.5, 0, 0, 1)', 
-    viewFactor: 0.2       
-});
+'use strict';
 
+// ---- Scroll reveal (IntersectionObserver; content stays visible without JS) ----
+(function () {
+    // Tells layout.js's watchdog that reveal is handled, so it leaves html.js on
+    window.revealReady = true;
 
-sr.reveal('.hero-left h1', { delay: 100 });
-sr.reveal('.hero-left h2', { delay: 200 });
-sr.reveal('.hero-left .team-logo', { delay: 300, scale: 0.9, distance: '0px' }); 
-sr.reveal('.hero-right', { origin: 'right', distance: '50px', delay: 200 });
+    var revealed = document.querySelectorAll('.reveal');
+    if (!revealed.length) return;
 
-
-sr.reveal('.about-content', { origin: 'left', distance: '50px' });
-sr.reveal('.about-image', { origin: 'right', distance: '50px', delay: 150 });
-
-sr.reveal('.sponsors-section', { delay: 100 });
-sr.reveal('.leads-section .team-grid', { delay: 100 });
-sr.reveal('.events-grid', { delay: 100 });
-sr.reveal('.events-archive', { delay: 100 });
-sr.reveal('.resources-grid', { delay: 100 });
-sr.reveal('.contact-layout', { delay: 100 });
-
-// Footer
-sr.reveal('.footer-container', { delay: 50, distance: '20px' });
-
-const modalOpenButtons = document.querySelectorAll('[data-modal-target]');
-const modalCloseButtons = document.querySelectorAll('.modal-close-btn');
-
-function openModal(modal) {
-    if (modal == null) return;
-    modal.classList.add('active');
-}
-
-function closeModal(modal) {
-    if (modal == null) return;
-    modal.classList.remove('active');
-}
-
-modalOpenButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const modal = document.querySelector(button.dataset.modalTarget);
-        openModal(modal);
-    });
-});
-
-modalCloseButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const modal = button.closest('.modal');
-        closeModal(modal);
-    });
-});
-
-
-
-const backToTopButton = document.querySelector('.back-to-top-btn');
-
-
-const handleScroll = () => {
-
-    if (window.scrollY > 300) {
-     
-        backToTopButton.classList.add('active');
-    } else {
-  
-        backToTopButton.classList.remove('active');
+    function showAll() {
+        revealed.forEach(function (el) { el.classList.add('is-visible'); });
     }
-};
 
+    /* Crawlers and auditors render the page once without ever scrolling, so an
+       IntersectionObserver never fires for anything below the fold and those
+       sections stay at opacity 0. That is what breaks the Search Console live
+       test and the Lighthouse screenshot. Everyone here gets the identical
+       markup either way, only the animation is skipped. */
+    var ua = navigator.userAgent || '';
+    var isCrawler = navigator.webdriver === true || /bot|crawl|spider|slurp|lighthouse|headless|inspectiontool|googleother|pagespeed|preview|validator|facebookexternalhit|embedly|quora link preview|screaming frog/i.test(ua);
 
-window.addEventListener('scroll', handleScroll);
+    // layout.js has already folded the OS setting and the footer toggle into
+    // this class, so read it rather than the media query on its own.
+    var motionOff = document.documentElement.classList.contains('motion-off');
 
-// Countdown Timer Logic
-const countdowns = document.querySelectorAll('[data-countdown-target]');
+    if (isCrawler || motionOff || !('IntersectionObserver' in window)) {
+        showAll();
+        return;
+    }
 
-countdowns.forEach((countdown) => {
-    const targetDateValue = countdown.getAttribute('data-countdown-target');
-    if (!targetDateValue) return;
-
-    const targetDate = new Date(targetDateValue).getTime();
-    if (Number.isNaN(targetDate)) return;
-
-    const daysEl = countdown.querySelector('.days');
-    const hoursEl = countdown.querySelector('.hours');
-    const minutesEl = countdown.querySelector('.minutes');
-    const secondsEl = countdown.querySelector('.seconds');
-
-    const updateCountdown = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance < 0) {
-            clearInterval(updateCountdown);
-            countdown.innerHTML = "<div class='time-box' style='width:100%'><span>EVENT LIVE!</span></div>";
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        if (daysEl) daysEl.textContent = days < 10 ? '0' + days : days.toString();
-        if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours.toString();
-        if (minutesEl) minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes.toString();
-        if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds.toString();
-    }, 1000);
-});
-
-// Mobile Menu Logic
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const siteNav = document.querySelector('.site-nav');
-const dropdowns = document.querySelectorAll('.dropdown');
-
-if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        siteNav.classList.toggle('active');
-    });
-}
-
-// Mobile Dropdown Logic
-dropdowns.forEach(dropdown => {
-    const dropbtn = dropdown.querySelector('.dropbtn');
-    if (dropbtn) {
-        dropbtn.addEventListener('click', (e) => {
-            if (window.innerWidth <= 900) {
-                // Prevent default behavior
-                e.preventDefault();
-                
-                // Close other dropdowns
-                dropdowns.forEach(otherDropdown => {
-                    if (otherDropdown !== dropdown) {
-                        otherDropdown.classList.remove('active');
-                    }
-                });
-                
-                dropdown.classList.toggle('active');
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
             }
         });
-    }
-});
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (siteNav && mobileMenuBtn && !siteNav.contains(e.target) && !mobileMenuBtn.contains(e.target) && window.innerWidth <= 900) {
-        siteNav.classList.remove('active');
-        mobileMenuBtn.classList.remove('active');
+    revealed.forEach(function (el) { observer.observe(el); });
+
+    /* Second safety net, for a real browser whose observer never delivers:
+       anything still hidden once the page has been loaded a while is shown.
+       Sections the visitor has not reached yet are untouched, so scrolling
+       still animates normally. */
+    window.addEventListener('load', function () {
+        window.setTimeout(function () {
+            revealed.forEach(function (el) {
+                if (el.classList.contains('is-visible')) return;
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('is-visible');
+                    observer.unobserve(el);
+                }
+            });
+        }, 1200);
+    });
+})();
+
+// ---- Back to top ----
+(function () {
+    var backToTopButton = document.querySelector('.back-to-top-btn');
+    if (!backToTopButton) return;
+
+    window.addEventListener('scroll', function () {
+        backToTopButton.classList.toggle('active', window.scrollY > 300);
+    });
+})();
+
+// ---- Countdown timers ----
+(function () {
+    var countdowns = document.querySelectorAll('[data-countdown-target]');
+
+    countdowns.forEach(function (countdown) {
+        var targetDateValue = countdown.getAttribute('data-countdown-target');
+        if (!targetDateValue) return;
+
+        var targetDate = new Date(targetDateValue).getTime();
+        if (Number.isNaN(targetDate)) return;
+
+        var daysEl = countdown.querySelector('.days');
+        var hoursEl = countdown.querySelector('.hours');
+        var minutesEl = countdown.querySelector('.minutes');
+        var secondsEl = countdown.querySelector('.seconds');
+
+        var pad = function (n) { return n < 10 ? '0' + n : String(n); };
+
+        var updateCountdown = setInterval(function () {
+            var distance = targetDate - Date.now();
+
+            if (distance < 0) {
+                clearInterval(updateCountdown);
+                countdown.innerHTML = "<div class='time-box' style='width:100%'><span>EVENT LIVE!</span></div>";
+                return;
+            }
+
+            var days = Math.floor(distance / 86400000);
+            var hours = Math.floor((distance % 86400000) / 3600000);
+            var minutes = Math.floor((distance % 3600000) / 60000);
+            var seconds = Math.floor((distance % 60000) / 1000);
+
+            if (daysEl) daysEl.textContent = pad(days);
+            if (hoursEl) hoursEl.textContent = pad(hours);
+            if (minutesEl) minutesEl.textContent = pad(minutes);
+            if (secondsEl) secondsEl.textContent = pad(seconds);
+        }, 1000);
+    });
+})();
+
+// ---- Newsletter year filter + search ----
+(function () {
+    var list = document.querySelector('[data-newsletter-list]');
+    if (!list) return;
+
+    var items = Array.prototype.slice.call(list.querySelectorAll('.newsletter-item'));
+    var chips = Array.prototype.slice.call(document.querySelectorAll('[data-year-filter]'));
+    var searchInput = document.querySelector('[data-newsletter-search]');
+    var emptyMessage = document.querySelector('[data-newsletter-empty]');
+    var activeYear = 'all';
+
+    function applyFilters() {
+        var query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+        var shown = 0;
+
+        items.forEach(function (item) {
+            var yearMatch = activeYear === 'all' || item.getAttribute('data-year') === activeYear;
+            var titleEl = item.querySelector('.newsletter-title');
+            var title = titleEl ? titleEl.textContent.toLowerCase() : '';
+            var searchMatch = query === '' || title.indexOf(query) !== -1;
+            var visible = yearMatch && searchMatch;
+
+            item.hidden = !visible;
+            if (visible) shown++;
+        });
+
+        if (emptyMessage) emptyMessage.hidden = shown > 0;
     }
-});
+
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            activeYear = chip.getAttribute('data-year-filter');
+            chips.forEach(function (other) {
+                var isActive = other === chip;
+                other.classList.toggle('is-active', isActive);
+                other.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+            applyFilters();
+        });
+    });
+
+    if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
+    }
+
+    applyFilters();
+})();
+
+// ---- Media gallery event filter + search ----
+(function () {
+    var searchInput = document.querySelector('[data-media-search]');
+    if (!searchInput) return;
+
+    var sections = Array.prototype.slice.call(document.querySelectorAll('[data-media-section]'));
+    var chips = Array.prototype.slice.call(document.querySelectorAll('[data-event-filter]'));
+    var emptyMessage = document.querySelector('[data-media-empty]');
+    var activeEvent = 'all';
+
+    function applyFilter() {
+        var query = searchInput.value.trim().toLowerCase();
+        var shownSections = 0;
+
+        sections.forEach(function (section) {
+            var eventName = section.getAttribute('data-media-section') || '';
+            var label = eventName.toLowerCase();
+            var eventMatch = activeEvent === 'all' || eventName === activeEvent;
+            var items = Array.prototype.slice.call(section.querySelectorAll('.gallery-item'));
+            var shownItems = 0;
+
+            items.forEach(function (item) {
+                var captionEl = item.querySelector('figcaption');
+                var caption = captionEl ? captionEl.textContent.toLowerCase() : '';
+                var searchMatch = query === '' || label.indexOf(query) !== -1 || caption.indexOf(query) !== -1;
+                var visible = eventMatch && searchMatch;
+
+                item.hidden = !visible;
+                if (visible) shownItems++;
+            });
+
+            section.hidden = shownItems === 0;
+            if (shownItems > 0) shownSections++;
+        });
+
+        if (emptyMessage) emptyMessage.hidden = shownSections > 0;
+    }
+
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            activeEvent = chip.getAttribute('data-event-filter');
+            chips.forEach(function (other) {
+                var isActive = other === chip;
+                other.classList.toggle('is-active', isActive);
+                other.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+            applyFilter();
+        });
+    });
+
+    searchInput.addEventListener('input', applyFilter);
+    applyFilter();
+})();
+
+// ---- Document viewer: swap between the PDF and the formatted version ----
+(function () {
+    var toggle = document.querySelector('[data-doc-toggle]');
+    var pdfView = document.querySelector('[data-doc-pdf]');
+    var formattedView = document.querySelector('[data-doc-formatted]');
+    if (!toggle || !pdfView || !formattedView) return;
+
+    toggle.addEventListener('click', function () {
+        var showFormatted = formattedView.hidden;
+
+        formattedView.hidden = !showFormatted;
+        pdfView.hidden = showFormatted;
+        formattedView.classList.add('is-visible');
+
+        toggle.setAttribute('aria-expanded', showFormatted ? 'true' : 'false');
+        toggle.textContent = showFormatted ? 'View PDF' : 'View Formatted Version';
+    });
+})();

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Our Robots | ArrowDynamics</title>
+    <link rel="canonical" href="https://www.frcteam10079.org/robots.html">
+    <meta name="description" content="The competition robots of ArrowDynamics, FRC Team 10079, one new machine every season.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="images/opt/logos/Ad%20Square.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Non-blocking: media="print" keeps this off the critical path,
+         then onload promotes it. Falls back to system-ui until it lands. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"></noscript>
+</head>
+<body>
+    <div class="content-wrap">
+        <script src="layout.js" data-page="robots"></script>
+
+        <main class="site-content">
+            <section class="page-hero">
+                <p class="eyebrow">Robots</p>
+                <h1>Our Robots</h1>
+                <p>One brand-new machine every season, designed and built by students.</p>
+            </section>
+
+            <div class="robot-list">
+                <article class="robot-card reveal">
+                    <div class="robot-card-photo">
+                        <picture>
+                            <source type="image/webp"
+                                    srcset="images/opt/robot-2026-800.webp 800w, images/opt/robot-2026-1200.webp 1200w"
+                                    sizes="(min-width: 900px) 480px, 100vw">
+                            <img src="images/Robot%202026.jpg" alt="ArrowDynamics 2026 competition robot" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="robot-card-info">
+                        <p class="robot-year">2026 Season</p>
+                       
+                        <h2 class="robot-name">Chris</h2>
+                        <p class="robot-game">Game: Rebuilt</p>
+                       
+                        <p class="robot-desc">
+                            Our second competition robot carried us to the event finals at Glacier Peak.
+                            You can view the <a href = "images/Copy of ArrowDynamics 10079 TechBinder 2026.pdf" target="_blank" rel="noopener noreferrer">technical binder</a> for a full write-up of the robot's design and features.
+                        </p>
+                        <div class="robot-awards">
+                            <span class="result-award silver">Glacier Peak Finalists</span>
+                            <span class="result-award">Rising All-Star &times;3</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="robot-card reveal">
+                    <div class="robot-card-photo">
+                        <picture>
+                            <source type="image/webp"
+                                    srcset="images/opt/team-robot-800.webp 800w, images/opt/team-robot-1200.webp 1200w"
+                                    sizes="(min-width: 900px) 480px, 100vw">
+                            <img src="images/arrowdynamics-frc-team-robot.jpeg" alt="ArrowDynamics 2025 rookie-season robot" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="robot-card-info">
+                        <p class="robot-year">2025 Season &middot; Rookie Year</p>
+                        <h2 class="robot-name">Kevin</h2>
+                        <p class="robot-game">Game: Reefscape</p>
+                        <!-- EDIT HERE: describe the rookie robot -->
+                        <p class="robot-desc">
+                            The machine that started it all, our rookie-season robot, and the one
+                            that earned us the Rookie All-Star Award twice. A full write-up is
+                            coming soon.
+                        </p>
+                        <div class="robot-awards">
+                            <span class="result-award">Rookie All-Star Award &times;2</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <section class="page-section reveal">
+                <div class="action-links">
+                    <a href="https://github.com/FRCTeam10079" class="action-link" target="_blank" rel="noopener noreferrer">Robot Code on GitHub</a>
+                    <a href="calendar.html" class="action-link">Competition Results</a>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>renderFooter()</script>
+    <script src="script.js"></script>
+</body>
+</html>
